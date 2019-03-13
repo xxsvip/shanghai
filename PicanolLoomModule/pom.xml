@@ -2,26 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>shanghai</artifactId>
         <groupId>com.tianqiauto.textile.weaving</groupId>
-        <!--suppress MavenPropertyInParent-->
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-
-    <artifactId>core</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>PicanolLoomModule</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <!--必佳乐纺织机采集模块-->
+        <!-- 必佳乐织机纺织程序加密解密所需包 -->
         <dependency>
-            <groupId>com.tianqiauto.textile.weaving</groupId>
-            <artifactId>PicanolLoomModule</artifactId>
-            <version>${version}</version>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-ext-jdk15on</artifactId>
+            <version>1.55</version>
         </dependency>
 
     </dependencies>
+
 
 </project>
