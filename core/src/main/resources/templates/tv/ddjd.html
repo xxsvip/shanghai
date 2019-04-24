@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" id="html">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>订单进度</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" /><link th:href="@{/tv/css/mui.min.css}" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" th:href="@{/tv/css/main.css}"/></head>
+
+	<body>
+		<div class="big-ping">
+			<div class="big-ping-header">
+				<span class="header-qfzl">
+						订单进度	
+					</span>
+					<div class="header-r">
+						<span class="header-tim" id="Date"></span>
+						<!--<span class="header-bcz">
+					早班    
+				</span>
+						<span class="header-bcj">
+					甲班    
+				</span>-->
+					</div>
+
+				</div>
+			<div class="sp-content"style="width: 100%;">
+				<div id="ddjd_echarts" style="width: 100%;height:70rem;">
+					
+				</div>
+			</div>
+
+		</div>
+ 
+	<script th:src="@{/tv/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/tv/js/mui.min.js}"></script>
+<script th:src="@{/tv/js/date.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/tv/js/echarts.min.js}"></script>
+<script th:src="@{/tv/js/ddjd.js}"></script>
+<script type="text/javascript" charset="utf-8">
+  	mui.init();
+</script>
+</body>
+
+</html>

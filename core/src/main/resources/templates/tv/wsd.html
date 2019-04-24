@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html id="html" lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" /><link th:href="@{/tv/css/mui.min.css}" rel="stylesheet"/>
+		<link rel="stylesheet" th:href="@{/tv/css/main.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/tv/css/animate.css}" />
+	</head>
+
+	<body>
+		<div id="wsd_warp">
+			<!--<div class="bottom" id="wsd1">
+
+			</div>-->
+			<!--<div class="bottom" id="wsd2">
+
+			</div>-->
+		</div>
+		<div id="wd_echarts" style="width: 96%;height: 6rem;margin: 0.5rem auto;"></div>
+
+		</div>
+	</body>
+	<script type="text/javascript" th:src="@{/tv/js/jquery-3.2.1.min.js}" ></script>
+	<script th:src="@{/tv/js/echarts.min.js}"  type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" th:src="@{/tv/js/wsd.js}" ></script>
+	<script>
+			var width = document.body.clientWidth || document.document.clientWidth;
+			var html = document.getElementById("html");
+			html.style.fontSize = width / 1920 * 100 + 'px';
+			window.onload = window.onresize = function() {
+				var html = document.getElementById('html')
+				var width = document.body.clientWidth || document.document.clientWidth;
+				html.style.fontSize = width / 1920 * 100 + 'px';
+			}
+		</script>
+
+</html>

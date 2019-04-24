@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>上海纺织</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" /><link th:href="@{/tv/css/mui.min.css}"  rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" th:href="@{/tv/css/main.css}"/></head>
+
+	<body>
+		<div class="big-ping">
+			<div class="gfxx">
+				<div class="big-ping-header">
+					<span class="header-qfzl">
+				了机预测
+			</span>
+					<div class="header-r">
+						<span class="header-tim" id="Date"></span>
+						<!--<span class="header-bcz" id="banci">
+					&lt;!&ndash;早班   &ndash;&gt;
+				</span>
+						<span class="header-bcj" id="lunban">
+					&lt;!&ndash;甲班&ndash;&gt;
+				</span>-->
+					</div>
+
+				</div>
+
+				<table class="layui-table center-table" lay-even="" lay-skin="row">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>机台号</th>
+							<th>运行状态</th>
+							<th>合约号</th>
+							<th>织缩</th>
+							<th>纬密</th>
+							<th>车速</th>
+							<th>织轴编号</th>
+							<th>总经长</th>
+							<th>剩余经长</th>
+							<th>预计了机时间</th>
+							<th>了机倒计时</th>
+						</tr>
+					</thead>
+					<tbody id="body">
+						<!--<tr>
+							<td>1</td>
+							<td>织机001</td>
+							<td>运行</td>
+							<td>03-18-82</td>
+							<td>90%</td>
+							<td>200</td>
+							<td>60</td>
+							<td>10</td>
+							<td>30000米</td>
+							<td>21000米</td>
+							<td>900米</td>
+							<td>8</td>
+							<td>2019-04-10 15:05</td>
+							<td>500分钟</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>织机001</td>
+							<td>运行</td>
+							<td>03-18-82</td>
+							<td>90%</td>
+							<td>200</td>
+							<td>60</td>
+							<td>10</td>
+							<td>30000米</td>
+							<td>21000米</td>
+							<td>900米</td>
+							<td>8</td>
+							<td>2019-04-10 15:05</td>
+							<td>500分钟</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>织机001</td>
+							<td>运行</td>
+							<td>03-18-82</td>
+							<td>90%</td>
+							<td>200</td>
+							<td>60</td>
+							<td>10</td>
+							<td>30000米</td>
+							<td>21000米</td>
+							<td>900米</td>
+							<td>8</td>
+							<td>2019-04-10 15:05</td>
+							<td>500分钟</td>
+						</tr>-->
+					</tbody>
+				</table>
+			</div>
+
+			
+		</div>
+ 
+	<script th:src="@{/tv/js/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/tv/js/tv/liao_ji_yuce.js}" ></script>
+<script th:src="@{/tv/js/mui.min.js}" ></script>
+<script th:src="@{/tv/js/date.js}"  type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  	mui.init();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>上海纺织</title>
+    <script src="../../static/tv/js/mui.min.js"></script>
+    <link href="../../static/tv/css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../../static/tv/css/main.css"/>
+    
+</head>
+<body style="background: #2f333c;">
+	   <div class="mui-content">
+		   		<div class="select_box">
+		   			<h1 class="mui-popup-title fouc">HMES-大屏展示</h1>
+   			        <h2 class="mui-btn mui-btn-primary mui-btn-outlined fouc"   id="mb">选择方案</h2>
+   			        <div class="mui-collapse-content" id="xuanxiang">
+   			            <a href="javascript:;" data-url="HF-zyzlzb.html">方案一</a>
+   			            <a href="javascript:;" data-url="cl-rb-QF.html">方案二</a>
+   			            <a href="javascript:;" data-url="zxzlcsbj.html">方案三</a>
+   			            <a href="javascript:;" data-url="cshd-lstx.html">方案四</a>
+   			            <a href="javascript:;" data-url="cl-rb-LT.html">方案五</a>
+   			            <a href="javascript:;" data-url="HF-wxby.html">方案六</a>
+   			            <a href="javascript:;" data-url="jrgfxx-XS.html">方案七</a>
+   			            <a href="javascript:;" data-url="QF-zyzlzb.html">方案八</a>
+   			            <a href="javascript:;" data-url="jrgfxx-QH.html">方案九</a>
+   			        </div>
+		   	  </div>
+	   </div>
+	   <script src="../../static/tv/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	   <script type="text/javascript" charset="utf-8">
+        mui.init();
+      	$(function(){
+      		$("#mb").click(function(){
+      			$("#xuanxiang").slideToggle(1000);
+      		})
+      		$("#xuanxiang a").click(function(){
+      			var mUrl= $(this).attr("data-url");
+	   			mui.openWindow({
+	   				id:mUrl,
+	   				url:mUrl
+	   			})
+      		})
+      		$("#xuanxiang a,.fouc").focus(function(){
+      			$(this).css({background:'#008a8d',color:"#fff"})
+      		})
+      		$("#xuanxiang a,.fouc").blur(function(){
+      			$(this).css({background:'transparent',color:"#000"})
+      		})
+      	})
+ 
+	   </script>
+		<script src="../../static/tv/js/jquery-3.2.1.min.js"></script>
+		<script src="../../static/tv/js/mui.min.js"></script>
+		<script src="../../static/tv/js/date.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+		  	mui.init();
+		</script>
+</body>
+</html>

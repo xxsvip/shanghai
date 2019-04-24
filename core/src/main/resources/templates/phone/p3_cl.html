@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script th:src="@{/phone/js/mui.js}"></script>
+		<link th:href="@{/phone/css/mui.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}" />
+		<script th:src="@{/phone/js/jquery-1.8.3.min.js}"></script>
+
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+			<!-- 菜单容器 -->
+			<aside class="mui-off-canvas-right mui-transitioning" id="offCanvasSide">
+				<div class="mui-scroll-wrapper r_nav">
+					<div class="mui-scroll">
+						<!-- 菜单具体展示内容 -->
+						<h1 class="n_title">TIS</h1>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/chanliang/chan_liang}" class="mui-navigate-right"> 产量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a>
+							</li>
+							 <li class="mui-table-view-cell"><a th:href="@{/phone/zhizhou/zhi_zhou}" class="mui-navigate-right"> 织轴状态</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/liaoji/liaoji}" class="mui-navigate-right"> 了机预测</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/luobu/luobu}" class="mui-navigate-right"> 落布预测</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap mui-transitioning">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">产量</h1>
+				</header>
+				<nav class="mui-bar mui-bar-tab foot">
+					<a class="mui-tab-item  mui-action-back" th:href="@{javascript:history.back(-1)}">
+						<span class="mui-icon"><img th:src="@{/phone/img/back.png}" /></span>
+					</a>
+
+					<a class="mui-tab-item" th:href="@{/phone/index}">
+						<span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}" /></span>
+					</a>
+					<a class="mui-tab-item" href="#offCanvasSide">
+						<span class="mui-icon"><img th:src="@{/phone/img/menu.png}" /></span>
+					</a>
+				</nav>
+				<div class="mui-content warp">
+
+					<!-- 主界面具体展示内容 -->
+					<div id="slider" class="mui-slider">
+						<!--sub nav-->
+						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted cl">
+							<a dataMk="tab" class="mui-control-item mui-active" href="#item1">织机产量日报</a>
+							<a dataMk="tab" class="mui-control-item" href="#item2">入库产量日报</a>
+							<a dataMk="tab" class="mui-control-item" href="#item3">产量平衡日报</a>
+
+						</div>
+						<!--item content-->
+						<div class="mui-slider-group" id="mui-slider-group">
+							<!--织机产量日报-->
+							<div id="item1" class="mui-slider-item mui-control-content mui-active">
+								<div class="dx_title mui-row">
+									<div class="mui-text-center active">分品种产量</div>
+									<div class="mui-text-center">分轮班产量</div>
+								</div>
+								<div class="mui-scroll-wrapper" style="top:62px">
+									<div class="mui-scroll">
+										<div class="content">
+											<ul class="cl_lists">
+												<!--整体汇总-->
+												<li>
+													<div class="mui-row">
+														<div class="mui-col-xs-12 mui-text-center cl_bc">汇总</div>
+														<!--<h5 class="mui-col-xs-2 mui-text-center">当日</h5>-->
+														<div class="mui-col-xs-6 mui-text-center hzcl" >当日生产累计(米)<span id="drcl"></span></div>
+														<div class="mui-col-xs-6 mui-text-center hzcl" >当月生产累计(米)<span id="dycl"></span></div>
+													</div>
+												</li>
+                                               <!--分品种产量-->
+											    <li id="fpz_cl">
+
+												</li>
+                                                 <!--分轮班产量-->
+                                                  <li id="flb_cl" class="yc">
+													<!--甲班当日-->
+													  <div class="mui-row">
+														  <div class="mui-col-xs-12 mui-text-center cl_bc">汇总</div>
+														  <!--<h5 class="mui-col-xs-2 mui-text-center">当日</h5>-->
+														  <div class="mui-col-xs-6 mui-text-center hzcl" >当日生产累计(米)<span id="drlbcl"></span></div>
+														  <div class="mui-col-xs-6 mui-text-center hzcl" >当月生产累计(米)<span id="dylbcl"></span></div>
+													  </div>
+
+												</li>
+											</ul>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<!--入库产量日报-->
+							<div id="item2" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<div class="content">
+											<ul class="cl_lists">
+												<!--整体汇总-->
+												<li>
+													<div class="mui-row">
+														<div class="mui-col-xs-12 mui-text-center cl_bc">汇总</div>
+														<!--<h5 class="mui-col-xs-2 mui-text-center">当日</h5>-->
+														<div class="mui-col-xs-6 mui-text-center hzcl" >当日入库累计(米)<span id="dangrihuizong"></span></div>
+														<div class="mui-col-xs-6 mui-text-center hzcl" >当月入库累计(米)<span id="dangyuehuizong"></span></div>
+													</div>																								
+												</li>
+												<!--分品种入库-->
+												<li id="rukuli">
+
+												</li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--产量平衡日报-->
+							<div id="item3" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<div class="content">
+                                            <!--各工序产量图表-->
+											<div class="chart" id="lineChart"></div>
+											<ul class="nenghao wenshidu dixiao" id="clph">
+												<!--标题-->
+												<li>
+													   <div class="chanliang">
+					        	  	 	   	  	  			<div class="add">工序</div>
+					        	  	 	   	  	  		 	<div class="add">当日总产量(米)</div>
+					        	  	 	   	  	  		 	<div class="add">本月总产量(米)</div>
+					        	  	 	   	  	  		</div>
+					        	  	 	   	  	  	</li>
+												<!--	&lt;!&ndash;各工序产量&ndash;&gt;
+                                      <li>
+                                          <div class="chanliang">
+                                                            <div class="add">整经</div>
+                                                             <div class="add">8000</div>
+                                                             <div class="add">166660</div>
+                                                        </div>
+                                      </li>
+                                      <li>
+                                          <div class="chanliang">
+                                                            <div class="add">浆纱</div>
+                                                             <div class="add">8000</div>
+                                                             <div class="add">166660</div>
+                                                        </div>
+                                      </li>
+                                      <li>
+                                          <div class="chanliang">
+                                                            <div class="add">织布</div>
+                                                             <div class="add">8000</div>
+                                                             <div class="add">1000000</div>
+                                                        </div>
+                                      </li>
+                                      <li>
+                                          <div class="chanliang">
+                                                            <div class="add">入库</div>
+                                                             <div class="add">2123</div>
+                                                             <div class="add">212345</div>
+                                                        </div>
+                                      </li>-->
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--mui-slider-group-->
+					</div>
+					<!--主体内容部分 end-->
+
+				</div>
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<!--echarts-->
+		<script th:src="@{/phone/js/echarts.min.js}" ></script>
+		<script type="text/javascript" charset="utf-8" th:src="@{/phone/js/chanliang/chanliang.js}">
+
+		</script>
+
+	</body>
+
+</html>

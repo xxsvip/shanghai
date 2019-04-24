@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script th:src="@{/phone/js/mui.js}"></script>
+		<link th:href="@{/phone/css/mui.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}" />
+		<script th:src="@{/phone/js/jquery-1.8.3.min.js}"></script>
+		<script type="text/javascript" charset="utf-8" th:src="@{/phone/js/zhizhou/zhizhou.js}">
+
+		</script>
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+			<!-- 菜单容器 -->
+			<aside class="mui-off-canvas-right mui-transitioning" id="offCanvasSide">
+				<div class="mui-scroll-wrapper r_nav">
+					<div class="mui-scroll">
+						<!-- 菜单具体展示内容 -->
+						<h1 class="n_title">TIS</h1>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/chanliang/chan_liang}" class="mui-navigate-right"> 产量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a>
+							</li>
+							 <li class="mui-table-view-cell"><a th:href="@{/phone/zhizhou/zhi_zhou}" class="mui-navigate-right"> 织轴状态</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/liaoji/liaoji}" class="mui-navigate-right"> 了机预测</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/luobu/luobu}" class="mui-navigate-right"> 落布预测</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap mui-transitioning">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">织轴</h1>
+				</header>
+				<nav class="mui-bar mui-bar-tab foot">
+					<a class="mui-tab-item  mui-action-back" th:href="@{javascript:history.back(-1)}">
+						<span class="mui-icon"><img th:src="@{/phone/img/back.png}" /></span>
+					</a>
+
+					<a class="mui-tab-item" th:href="@{/phone/index}">
+						<span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}"/></span>
+					</a>
+					<a class="mui-tab-item" href="#offCanvasSide">
+						<span class="mui-icon"><img th:src="@{/phone/img/menu.png}"/></span>
+					</a>
+				</nav>
+				<div class="mui-content warp">
+
+					<!-- 主界面具体展示内容 -->
+
+					<div class="mui-slider">
+						<!--sub nav-->
+						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<a dataMk="tab" class="mui-control-item mui-active" href="#item1">织轴状态</a>
+						</div>
+						<!--item content-->
+
+						<div class="mui-slider-group">
+							<!--落布预测-->
+							<div id="item1" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<div class="content">
+											<ul class="cl_lists" id="zzzt">
+												<!--汇总-->
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!--mui-slider-group-->
+
+					</div>
+					<!--主体内容部分 end-->
+
+				</div>
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

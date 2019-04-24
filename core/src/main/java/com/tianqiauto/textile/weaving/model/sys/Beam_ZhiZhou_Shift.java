@@ -30,7 +30,7 @@ public class Beam_ZhiZhou_Shift {
 
     @ManyToOne
     @JoinColumn(name = "zhizhou_id")
-    private Beam_JingZhou zhizhou; //轴
+    private Beam_ZhiZhou zhizhou; //轴
 
 
     @ManyToOne

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script th:src="@{/phone/js/mui.js}"></script>
+		<link th:href="@{/phone/css/mui.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}"/>
+		<script  th:src="@{/phone/js/jquery-1.8.3.min.js}" ></script>
+		<script type="text/javascript" charset="utf-8" th:src="@{/phone/js/baojing/baojing.js}">
+
+		</script>
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+			<!-- 菜单容器 -->
+			<aside class="mui-off-canvas-right mui-transitioning" id="offCanvasSide">
+				<div class="mui-scroll-wrapper r_nav">
+					<div class="mui-scroll">
+						<!-- 菜单具体展示内容 -->
+						<h1 class="n_title">TIS</h1>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/chanliang/chan_liang}" class="mui-navigate-right"> 产量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a>
+							</li>
+							<li class="mui-table-view-cell"><a th:href="@{/phone/zhizhou/zhi_zhou}" class="mui-navigate-right"> 织轴状态</a></li>
+							<li class="mui-table-view-cell"><a th:href="@{/phone/liaoji/liaoji}" class="mui-navigate-right"> 了机预测</a></li>
+							<li class="mui-table-view-cell"><a th:href="@{/phone/luobu/luobu}" class="mui-navigate-right"> 落布预测</a></li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap mui-transitioning">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">报警</h1>
+				</header>
+				<nav class="mui-bar mui-bar-tab foot">
+					<a class="mui-tab-item  mui-action-back" th:href="@{javascript:history.back(-1)}">
+						<span class="mui-icon"><img th:src="@{/phone/img/back.png}"/></span>
+					</a>
+
+					<a class="mui-tab-item" th:href="@{/phone/index}">
+						<span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}" /></span>
+					</a>
+					<a class="mui-tab-item" href="#offCanvasSide">
+						<span class="mui-icon"><img th:src="@{/phone/img/menu.png}" /></span>
+					</a>
+				</nav>
+				<div class="mui-content  warp">
+						<!-- 主界面具体展示内容 -->
+						<div class="mui-slider">
+							<!--sub nav-->
+							<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted jb">
+								<div class="zl_title" id="dx_jt">
+									<a dataMk="tab" class="mui-control-item mui-active" href="#item1">低效机台</a>
+									<!--<div class="tx" id="dx_sl">2</div>-->
+								</div>
+								<div class="zl_title">
+									<a dataMk="tab" class="mui-control-item" href="#item2">能&nbsp;&nbsp;耗</a>
+									<div class="tx">2</div>
+								</div>
+								<div class="zl_title" id="wsd_bj_sl">
+									<a dataMk="tab" class="mui-control-item" href="#item3">温湿度</a>
+									<!--<div class="tx" id="wsd_sl"></div>-->
+								</div>
+								<div class="zl_title" id="lx_jt">
+									<a dataMk="tab" class="mui-control-item" href="#item4">离线机台</a>
+									<!--<div class="tx">2</div>-->
+								</div>
+							</div>
+							<!--item content-->
+							<div class="mui-slider-group">
+								<!--低效机台-->
+								<div id="item1" class="mui-slider-item mui-control-content mui-active">
+								<div class="mui-scroll-wrapper">
+							    <div class="mui-scroll">
+									<div class="content">
+										<ul class="bj_lists" id="dx">
+											<!--<li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>织机001[低效]报警  实际效率:60%</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+											<li>
+												<h5><span>10分钟前</span>TOP02 </h5> 
+												<h2>织机002[低效]报警  实际效率:62%</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+											<li>
+												<h5><span>10分钟前</span>TOP03 </h5> 
+												<h2>织机003[低效]报警  实际效率:63%</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>-->
+										</ul>								
+									 </div>
+									</div>
+									</div>
+								</div>
+								<!--能耗-->
+								<div id="item2" class="mui-slider-item mui-control-content">
+							     <div class="mui-scroll-wrapper">
+							      <div class="mui-scroll">
+									<div class="content">
+										<ul class="bj_lists">
+											 <li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>[能耗超]报警 实际能耗222kW·h</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+										</ul>
+									</div>
+									</div>
+									</div>
+								</div>
+								<!--温湿度-->
+								<div id="item3" class="mui-slider-item mui-control-content">
+                                  <div class="mui-scroll-wrapper">
+							      <div class="mui-scroll">
+									<div class="content">
+										<ul class="bj_lists" id="wsd_bj">
+											 <li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>T1[温湿度超标]报警  实际温度：22℃   实际湿度20%rh</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+										</ul>
+									</div>
+									</div>
+									</div>
+
+								</div>
+								<!--离线机台-->
+								<div id="item4" class="mui-slider-item mui-control-content">
+                                  <div class="mui-scroll-wrapper">
+							      <div class="mui-scroll">
+									<div class="content">
+										<ul class="bj_lists" id="lx">
+											<!-- <li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>织机004[离线]报警</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+											 <li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>织机004[离线]报警</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>
+											 <li>
+												<h5><span>10分钟前</span>TOP01 </h5> 
+												<h2>织机004[离线]报警</h2>
+												<p class="bom"> <span>2017-12-3</span> <span>15:35:43</span> </p>
+											</li>-->
+										</ul>
+									</div>
+									</div>
+									</div>
+
+								</div>
+								<!--mui-slider-group-->
+							</div>
+							<!--主体内容部分 end-->
+						</div>
+					 
+					<div class="mui-off-canvas-backdrop"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

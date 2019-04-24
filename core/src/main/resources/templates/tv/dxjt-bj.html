@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>上海纺织</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" /><link th:href="@{/tv/css/mui.min.css}" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" th:href="@{/tv/css/main.css}" /></head>
+
+	<body>
+		<div class="big-ping">
+			<div class="big-ping-header">
+				<span class="header-qfzl">
+				低效机台报警
+			</span>
+					<div class="header-r">
+						<span class="header-tim" id="Date"></span>
+						<!--<span class="header-bcz" id="banci">
+					&lt;!&ndash;早班 &ndash;&gt;
+				</span>
+						<span class="header-bcj" id="lunban">
+					&lt;!&ndash;甲班&ndash;&gt;
+				</span>-->
+					</div>
+
+				</div>
+			<div class="dxjt">				
+				<table class="layui-table center-table" lay-even="" lay-skin="row">
+
+					<thead>
+						<tr>
+							<th>车号</th>
+							<th>品种</th>
+							<th>实时效率</th>
+
+						</tr>
+					</thead>
+					<tbody id="body">
+						<!--<tr>
+							<td>1</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>
+							<tr>
+							<td>6</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>
+							<tr>
+							<td>6</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>
+	<tr>
+							<td>1</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>
+							<tr>
+							<td>6</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>
+							<tr>
+							<td>6</td>
+							<td>GJCF8.4D(80%长绒棉）</td>
+							<td>80%</td>
+
+						</tr>-->
+					</tbody>
+				</table>
+
+			</div>
+
+			<!--<div class="hjnybj">
+				<div class="hjnybj-title">
+					<span class="title">
+						环境能源报警
+					</span>
+				</div>
+				<p>1 车间  温度过高，当前温度29，湿度过低，当前湿度23%rh。气压过低，当前气压0.1KPa。</p>
+				<p>1 车间  温度过高，当前温度29，湿度过低，当前湿度23%rh。气压过低，当前气压0.1KPa。</p>
+
+			</div>-->
+		</div>
+ 
+	<script th:src="@{/tv/js/jquery-3.2.1.min.js}" ></script>
+		<script th:src="@{/tv/js/date.js}" type="text/javascript" charset="utf-8"></script>
+		<script th:src="@{/tv/js/tv/dxjt.js}" ></script>
+<script th:src="@{/tv/js/mui.min.js}" ></script>
+<!--<script src="js/date.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" charset="utf-8">
+  	mui.init();
+  	var pp =  $(".layui-table tbody")
+setInterval(function(){
+var tt = pp.find("tr:first");
+tt.animate({display:'none'},'slow',function(){tt.remove();pp.append(tt),tt.show('slow')});
+},500);
+</script>
+</body>
+
+</html>
