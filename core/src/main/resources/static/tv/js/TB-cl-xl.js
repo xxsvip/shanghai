@@ -15,24 +15,54 @@ function chanliang_xiaolv() {
             var data=res.data.datas;
             var columns=res.data.columns;
             var dr;
-            var zu_arry=[];
-            var day_zl_arry = [];
-            var day_xl_arry = [];
-            var lj_zl_arry = [];
-            var lj_xl_arry= [];
+            var zu_arry=[];//轮班
+            var day_zl_arry = [];//当日产量
+            var day_xl_arry = [];//当日效率
+            var lj_zl_arry = [];//当月产量
+            var lj_xl_arry= [];//当月效率
+            //当日产量效率详情
             $.each(data,function (i, result) {
                 day_xl_arry.push(result['xiaolv']);
                 day_zl_arry.push(result['drcl']);
                 dr="<tr><td>"+result['name']+"</td><td>"+result['drcl']+"</td><td>"+result['xiaolv']+"%</td></tr>";
                 $('#day_tbody').append(dr);
             });
+            //汇总当日产量和平均效率
+            var sum=0;
+            for(var i=0;i<day_zl_arry.length;i++){
+                sum+=day_zl_arry[i]
+            }
+            var sumxl=0;
+            for(var i=0;i<day_xl_arry.length;i++){
+                sumxl+=day_xl_arry[i]
+            }
+            var avg=(sumxl/day_xl_arry.length).toFixed(2);
+            if(avg==null || avg=="NaN" || avg=="undefined"){
+                avg=0;
+            }
+            $('#day_tbody').append("<tr><td>汇总</td><td>"+sum+"</td><td>"+avg+"%</td></tr>");
+
+            //当月产量效率详情
             $.each(columns,function (i, result) {
                 zu_arry.push(result['name']);
                 lj_zl_arry.push(result['dycl']);
                 lj_xl_arry.push(result['xiaolv']);
                 dr="<tr><td>"+result['name']+"</td><td>"+result['dycl']+"</td><td>"+result['xiaolv']+"%</td></tr>";
                 $('#lj_tboday').append(dr);
-            })
+            });
+            var dysum=0;
+            for(var i=0;i<lj_zl_arry.length;i++){
+                dysum+=lj_zl_arry[i];
+            }
+            var dysumxl=0;
+            for(var i=0;i<lj_xl_arry.length;i++){
+                dysumxl+=lj_xl_arry[i];
+            }
+            var dyavg=(dysumxl/lj_xl_arry.length).toFixed(2);
+            $('#lj_tboday').append("<tr><td>汇总</td><td>"+dysum+"</td><td>"+dyavg+"%</td></tr>");
+
+
+
 
             var dr_cl_xl_LT = echarts.init(document.getElementById('dr_xl'));
 

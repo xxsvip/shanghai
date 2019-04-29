@@ -49,7 +49,7 @@ function luobuyuce(){
             var j=0;
             $.each(data,function (i, result) {
                 j++;
-                if(result['luobushijian']<=30){
+                if(result['luobushijian']<=60){
                     col='mui-badge-red'
                 }else {
                     col='mui-badge-green'

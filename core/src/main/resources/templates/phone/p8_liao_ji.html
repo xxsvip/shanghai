@@ -7,11 +7,7 @@
     <script th:src="@{/phone/js/mui.js}"></script>
     <link th:href="@{/phone/css/mui.min.css}" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}"/>
-    <script th:src="@{/phone/js/jquery-1.8.3.min.js}"></script>
-    <script type="text/javascript" charset="utf-8" th:src="@{/phone/js/liaoji/liaoji.js}">
 
-
-    </script>
 </head>
 <body>
 	<!-- 侧滑导航根容器 -->
@@ -60,8 +56,10 @@
 		        
 		        <div class="mui-slider">
 		        	  <!--sub nav-->
-		        	  <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-		        	  	  <a dataMk="tab" class="mui-control-item mui-active" href="#item1">了机预测</a>
+		        	  <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" id="div_a">
+		        	  	  <a dataMk="tab" class="mui-control-item mui-active" id="jt" href="#item1">当日</a>
+						  <a dataMk="tab" class="mui-control-item" id="mt" href="#item1">明天</a>
+						  <a dataMk="tab" class="mui-control-item" id="ht" href="#item1">后天</a>
 		        	  </div>
 		        	  <!--item content-->
 		        	  
@@ -99,7 +97,8 @@
 		        	  	 	   </div>
 		        	  	 	   </div>
 		        	  	 </div>
-		        	  	 
+
+
 		        	  	 
 		        	  </div><!--mui-slider-group-->
 		        	  
@@ -110,6 +109,7 @@
 	    <div class="mui-off-canvas-backdrop"></div>
 	  </div>
 	</div>
-  
+	<script th:src="@{/phone/js/jquery-1.8.3.min.js}"></script>
+	<script type="text/javascript" charset="utf-8" th:src="@{/phone/js/liaoji/liaoji.js}"></script>
 </body>      
 </html>

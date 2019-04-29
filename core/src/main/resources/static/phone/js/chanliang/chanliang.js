@@ -31,7 +31,7 @@ function chanliangpingheng(){
         success: function(res){
 
             var data=res.data.datas;
-            var gongxu=[],dr=[];
+            var gongxu=[],dy=[];
             var item;
             $.each(data,function (i, result) {
                 item="<li><div div class='chanliang'><div class='add'>"+result['gongxu']+"</div>"+
@@ -39,7 +39,7 @@ function chanliangpingheng(){
                      "<div class='add'>"+result['dangyue']+"</div></div></li>";
                 $("#clph").append(item);
                 gongxu.push(result['gongxu']);
-                dr.push(result['dangri'])
+                dy.push(result['dangyue'])
             });
 
             var getOption = function(chartType) {
@@ -100,7 +100,7 @@ function chanliangpingheng(){
                                 position: 'inside'
                             }
                         },
-                        data: dr
+                        data: dy
                     }]
 
                 };
@@ -179,14 +179,15 @@ function pinzhongchanliang(){
             var columns=res.data.columns;
 
             $("#drcl").html(columns[0].drchangdu);
-
-            $("#dycl").html(columns[0].dychangdu);
+            $("#xl").html(columns[0].xiaolv+"%");
+            $("#dycl").html(columns[0].changdu);
             var data=res.data.datas;
             var item;
             $.each(data,function (i, result) {
                 item="<div class='mui-row'><div class='mui-col-xs-12 mui-text-center cl_bc'>"+result['pibuguige']+"/"+result['name']+"</div>"+
-                    "<div class='mui-col-xs-6 mui-text-center hzcl'>当日生产累计(米)<span>"+result['drchangdu']+"</span></div>"+
-                    "<div class='mui-col-xs-6 mui-text-center hzcl'>当月生产累计(米)<span>"+result['dychangdu']+"</span></div></div>"
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>当日生产累计(米)<span>"+result['drchangdu']+"</span></div>"+
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>当月生产累计(米)<span>"+result['dychangdu']+"</span></div>"+
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>效率<span>"+result['xiaolv']+"%</span></div></div>"
 
                 $("#fpz_cl").append(item);
             });
@@ -206,14 +207,15 @@ function lunbanchanliang(){
             var columns=res.data.columns;
 
             $("#drlbcl").html(columns[0].drchangdu);
-
+            $("#xllb").html(columns[0].xiaov+"%");
             $("#dylbcl").html(columns[0].dychangdu);
             var data=res.data.datas;
             var item;
             $.each(data,function (i, result) {
                 item="<div class='mui-row'><div class='mui-col-xs-12 mui-text-center cl_bc'>"+result['name']+"</div>"+
-                    "<div class='mui-col-xs-6 mui-text-center hzcl'>当日生产累计(米)<span>"+result['drchangdu']+"</span></div>"+
-                    "<div class='mui-col-xs-6 mui-text-center hzcl'>当月生产累计(米)<span>"+result['dychangdu']+"</span></div></div>"
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>当日生产累计(米)<span>"+result['drchangdu']+"</span></div>"+
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>当月生产累计(米)<span>"+result['dychangdu']+"</span></div>"+
+                    "<div class='mui-col-xs-4 mui-text-center hzcl'>效率<span>"+result['xiaolv']+"%</span></div></div>"
 
                 $("#flb_cl").append(item);
             });

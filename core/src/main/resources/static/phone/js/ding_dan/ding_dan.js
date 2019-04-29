@@ -33,6 +33,17 @@ mui.ready(function() {
         deceleration: 0.0005,
         indicators: true
     });
+    mui("#item1 .dx_title").on("tap", "div", function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        if($(this).text()=="近一周"){
+            yiwanchengdingdan(getDateStr(-7));
+        }else if($(this).text()=="近一月"){
+            yiwanchengdingdan(getDateStr(-30));
+        }else if($(this).text()=="近一年"){
+            yiwanchengdingdan(getDateStr(-365));
+        }
+    })
+
 });
 
 //    	进度条
@@ -91,18 +102,23 @@ function showDDJD() {
 }
 
 
-function yiwanchengdingdan() {
-    var jq=jQuery.noConflict();
-    jq.ajax({
+
+
+function yiwanchengdingdan(time) {
+
+    $.ajax({
         url:"http://localhost:8080/phone/dingdan/yiwanchengdingdan",
         type:"GET",
         dataType:'json',
-        data:{},
+        data:{time:time},
         success: function(res){
-        	jq("#ywcdd").html("");
+            $("#yz").html("");
             var data=res.data.datas;
             var item;
-            jq.each(data,function (i, result) {
+            $.each(data,function (i, result) {
+                if(result['jskaishishijian']==null || ''==result['jskaishishijian']){
+                    result['jskaishishijian']="无数据"
+                }
 				item="<li class='mui-table-view-cell mui-collapse'><a class='mui-navigate-right' href='#'>"+
 					 "<div class='pronum'><div class='pnl'><i></i>已完成总量： "+result['yiwanchengliang']+"</div>"+
 					 "<div class='pnr''><i></i>订单计划总量： "+result['xiadanshuliang']+"</div></div>"+
@@ -123,7 +139,7 @@ function yiwanchengdingdan() {
                      "<span class='mui-inline zz_title'>入库追踪</span><div class='chanliang mui-row'>"+
                      "<div class='mui-col-xs-4'><h5>首次入库时间</h5><p>"+result['rkkaishishijian']+"</p></div><div class='mui-col-xs-4'></div>"+
                      "<div class='mui-col-xs-4'><h5>入库累计产量</h5><p>"+result['rkchangdu']+"(米)</p></div></div></li></ul></div></li>"
-                jq("#ywcdd").append(item);
+                $("#yz").append(item);
             })
 
         }
@@ -132,18 +148,18 @@ function yiwanchengdingdan() {
 
 
 function weiwanchengdingdan() {
-    var jq=jQuery.noConflict();
-    jq.ajax({
+
+    $.ajax({
         url:"http://localhost:8080/phone/dingdan/weiwanchengdingdan",
         type:"GET",
         dataType:'json',
         data:{},
         success: function(res){
-            jq("#wwcdd").html("");
+            $("#wwcdd").html("");
             var data=res.data.datas;
             var item;
             var col;
-            jq.each(data,function (i, result) {
+            $.each(data,function (i, result) {
                 if(result['shifouchaoqi']=='未超期'){
                     col='green'
                 }else {
@@ -170,7 +186,7 @@ function weiwanchengdingdan() {
                      "<li><span class='mui-inline zz_title'>入库追踪</span>"+
                      "<div class='chanliang mui-row'><div class='mui-col-xs-4'><h5>首次入库时间</h5><p>"+result['rkkaishishijian']+"</p></div>"+
                      "<div class='mui-col-xs-4'><h5>入库累计产量</h5><p>"+result['rkchangdu']+"(米)</p></div></div></li></ul></div></li>"
-                jq("#wwcdd").append(item);
+                $("#wwcdd").append(item);
             })
 
         }
@@ -189,6 +205,16 @@ function weiwanchengdingdan() {
 	idObj.innerHTML = idObj.style.width;
 	
 }*/
+//获取时间
+
+function getDateStr(AddDayCount) {
+    var dd = new Date();
+    dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+    var y = dd.getFullYear();
+    var m = dd.getMonth() + 1;//获取当前月份的日期
+    var d = dd.getDate();
+    return y + '-' + (m < 10 ? '0' + m : m) + '-' + d;
+}
 weiwanchengdingdan();
-yiwanchengdingdan();
+yiwanchengdingdan(getDateStr(-7));
 

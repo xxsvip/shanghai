@@ -51,7 +51,7 @@
 	             <ul class="mui-table-view">
 	                  <li class="mui-table-view-cell"><a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a></li>
 	                  <li class="mui-table-view-cell"><a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a></li>
-	                  <li class="mui-table-view-cell"><a th:href="@{/phone/chanliang/chan_liang}" class="mui-navigate-right"> 产量</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/chanliang/chan_liang}"  class="mui-navigate-right"> 产量</a></li>
 	                  <li class="mui-table-view-cell"><a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a></li>
 	                  <li class="mui-table-view-cell"><a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a></li>
 	                  <li class="mui-table-view-cell"><a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a></li>
@@ -73,7 +73,7 @@
 		        <span class="mui-icon"><img th:src="@{/phone/img/back.png}" /></span>
 		    </a>
 		   
-		    <a class="mui-tab-item" href="index.html">
+		    <a class="mui-tab-item" th:href="@{/phone/index}">
 		        <span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}" /></span>
 		    </a>
 		    <a class="mui-tab-item" href="#offCanvasSide">
@@ -90,21 +90,21 @@
 		        <!--主导航-->
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/zhiliang/zhi_liang}" style="background: #e48337;">
+			            <a th:href="@{/phone/zhiliang/zhi_liang}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/zl.png}"/></span>
 			                <div class="mui-media-body">质量</div>
 			            </a>
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/dingdan/ding_dan}" style="background: #47d459;">
+			            <a th:href="@{/phone/dingdan/ding_dan}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/dd.png}" /></span>
 			                <div class="mui-media-body">订单</div>
 			            </a>
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/chanliang/chan_liang}" style="background: #7d54d6;">
+			            <a th:href="@{/phone/chanliang/chan_liang}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/cl.png}" /></span>
 			                <div class="mui-media-body">产量</div>
 			            </a>
@@ -118,35 +118,35 @@
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/nenghao/neng_hao}" style="background: #279cec;">
+			            <a th:href="@{/phone/nenghao/neng_hao}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/nh.png}" /></span>
 			                <div class="mui-media-body">能源</div>
 			            </a>
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 warning">
-			            <a th:href="@{/phone/baojing/bao_jing}" style="background: #e24c42;">
+			            <a th:href="@{/phone/baojing/bao_jing}" style="background: #36d4c3;">
 			            	<!--<div class="tx">3</div>-->
 			                <span class="mui-icon"><img th:src="@{/phone/img/bj.png}" /></span>
 			                <div class="mui-media-body">警告</div>
 			            </a>
 		            </li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/zhizhou/zhi_zhou}" style="background: #57c4ff;">
+			            <a th:href="@{/phone/zhizhou/zhi_zhou}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/zhou.png}" /></span>
 			                <div class="mui-media-body">织轴状态</div>
 			            </a>
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/liaoji/liaoji}" style="background: #e3b601;">
+			            <a th:href="@{/phone/liaoji/liaoji}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/liao_ji.png}"/></span>
 			                <div class="mui-media-body">了机预测</div>
 			            </a>
 			        </li>
 			        
 			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-			            <a th:href="@{/phone/luobu/luobu}" style="background: #00a4a5;">
+			            <a th:href="@{/phone/luobu/luobu}" style="background: #36d4c3;">
 			                <span class="mui-icon"><img th:src="@{/phone/img/luo_bu.png}" /></span>
 			                <div class="mui-media-body">落布预测</div>
 			            </a>

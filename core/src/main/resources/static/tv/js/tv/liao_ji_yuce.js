@@ -13,7 +13,7 @@ function liaojiyuce() {
                     "<td>"+result['heyuehao']+"</td><td>"+result['zhisuo']+"</td><td>"+result['weimi']+"</td><td>"+result['chesu']+"</td>"+
                     "<td>"+result['zhouhao']+"</td><td>"+result['zjc']+"</td><td>"+result['syjc']+"</td>"+
                     "<td>"+result['yuceliaoji']+"</td>"+
-                    "<td>"+result['liaojishijian']+"分钟</td></tr>";
+                    "<td>"+result['liaojishijian']+"小时</td></tr>";
                 $("#body").append(item);
             })
         }

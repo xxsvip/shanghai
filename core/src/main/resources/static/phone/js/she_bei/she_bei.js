@@ -49,6 +49,10 @@ mui.ready(function() {
 //					},
         ondragend:function(){//拖拽结束后调用的函数
             console.log($('.range-slider').val()+"-----")
+            var strs=[];
+            var str=$("#wms").val();
+
+            dixiaojitai(str)
         }
     });
 
@@ -67,6 +71,9 @@ mui.ready(function() {
 
 //布机实时数据
 function bjss() {
+
+
+
     $.ajax({
         url:"http://localhost:8080/phone/shebei/buji_shishi",
         type:"GET",
@@ -96,12 +103,13 @@ bjss();
 
 
 
-function dixiaojitai() {
+function dixiaojitai(str) {
+    str=$("#wms").val();
     $.ajax({
         url:"http://localhost:8080/phone/shebei/dixiao_jitai",
         type:"GET",
         dataType:'json',
-        data:{},
+        data:{str:str},
         success: function(res){
             $("#xl").html("");
             var data=res.data.datas;

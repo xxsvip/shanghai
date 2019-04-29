@@ -25,17 +25,33 @@
 				</div>
 			</div>
 		</div>
-<div style="margin : 50px">
-		<div  id="grsj_cl" style="width: 1200px;height:500px;margin: auto"></div>
-</div>
+		<table class="layui-table center-table" lay-even="" lay-skin="row">
+			<thead>
+			<tr>
+				<th>当月产量汇总</th>
+				<th>当月平均效率</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td id="cl"></td>
+				<td id="xl"></td>
+			</tr>
+			</tbody>
+		</table>
+
+
+
+
 	</div>
+	<div id="grsj_cl" style="width: 100%;height: 40rem;margin: 0.5rem auto;"></div>
 
 
-	</body>
-	<script th:src="@{/tv/js/jquery-3.2.1.min.js}" ></script>
-	<script th:src="@{/tv/js/echarts.min.js}"></script>
-	<script th:src="@{/tv/js/tv/clyb_js.js}"></script>
-	<script th:src="@{/tv/js/date.js}" type="text/javascript" charset="utf-8"></script>
+</body>
+<script th:src="@{/tv/js/jquery-3.2.1.min.js}" ></script>
+<script th:src="@{/tv/js/echarts.min.js}"></script>
+<script th:src="@{/tv/js/tv/clyb_js.js}"></script>
+<script th:src="@{/tv/js/date.js}" type="text/javascript" charset="utf-8"></script>
 
 
 </html>

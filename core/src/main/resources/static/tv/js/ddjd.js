@@ -40,7 +40,7 @@ $.ajax({
                 containLabel: true
             },
             xAxis: {
-                min: new Date(),
+                min: new Date(minDate),
                 type: 'time',
                 boundaryGap: [0, 0.01],
                 position: 'top',

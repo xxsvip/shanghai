@@ -34,33 +34,59 @@ mui.ready(function(){
 });
 
 
-function liaojiyuce(){
+
+
+$("#div_a").on('click','a',function(){
+    var id= $(this).attr('id');
+    if(id=='jt'){
+        liaojiyuce(getDateStr(0));
+    }else if(id=='mt'){
+        liaojiyuce(getDateStr(1));
+    }else {
+        liaojiyuce(getDateStr(2));
+    }
+});
+
+//获取时间
+
+function getDateStr(AddDayCount) {
+    var dd = new Date();
+    dd.setDate(dd.getDate() + AddDayCount);//获取AddDayCount天后的日期
+    var y = dd.getFullYear();
+    var m = dd.getMonth() + 1;//获取当前月份的日期
+    var d = dd.getDate();
+    return y + '-' + (m < 10 ? '0' + m : m) + '-' + d;
+}
+
+
+function liaojiyuce(time){
+
     $.ajax({
         url:"http://localhost:8080/phone/liaoji/liao_ji",
         type:"GET",
         dataType:'json',
-        data:{},
+        data:{time:time},
         success: function(res){
             $("#liaoji").html("");
             var data=res.data.datas;
-            var lbs="<li><h4 style='text-align: center;'>当班预计了机数："+data.length+"</h4></li>"
+            var lbs="<li><h4 style='text-align: center;'>预计了机数："+data.length+"</h4></li>"
             $("#liaoji").append(lbs);
             var item;
             var col;
             var j=0;
             $.each(data,function (i, result) {
                 j++;
-                if(result['liaojishijian']<=30){
+                if(result['liaojishijian']<=24){
                     col='mui-badge-red'
                 }else {
                     col='mui-badge-green'
                 }
                 item="<li><h2><span>机台号： "+result['jitaihao']+"</span>NO.  "+j+"</h2>"+
-                    "<div class='gb'><p>合约号："+result['name']+"</p><p>预计了机时间："+result['yuceliaoji']+"</p>"+
-                    "<i class='"+col+"'>了机倒计时："+result['liaojishijian']+"分钟</i></div></li>"
+                    "<div class='gb'><p>合约号："+result['name']+"      品种："+result['pibuguige']+"</p><p>预计了机时间："+result['yuceliaoji']+"</p>"+
+                    "<i class='"+col+"'>了机倒计时："+result['liaojishijian']+"小时</i></div></li>"
                 $("#liaoji").append(item);
             });
         }
     })
 };
-liaojiyuce();
+liaojiyuce(getDateStr(0));
