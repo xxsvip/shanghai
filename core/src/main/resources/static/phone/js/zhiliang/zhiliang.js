@@ -107,7 +107,7 @@ function jiangshazhiliang() {
                     "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>上浆后强力<span>"+result['shangjianghouqiangli']+"</span></div>"+
                     "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>强力增强<span>"+result['qianglizengqiang']+"</span></div>"+
                     "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>上浆回潮<span>"+result['shangjianghuichao']+"</span></div>"+
-                    "<div class='mui-row'><div class='mui-col-xs-3 mui-text-center hzcl fgx'>整经重长度<span>"+result['zhengjingzongchangdu']+"</span></div>"+
+                    "<div class='mui-row'><div class='mui-col-xs-3 mui-text-center hzcl fgx'>整经总长度<span>"+result['zhengjingzongchangdu']+"</span></div>"+
                     "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>浆纱总长度<span>"+result['jiangshazongchangdu']+"</span></div>"+
                     "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>伸长<span>"+result['shenchang']+"</span></div>"+"</div></li>"
                 $("#js_zl").append(item)
