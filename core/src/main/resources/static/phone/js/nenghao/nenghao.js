@@ -9,8 +9,8 @@ function wenshidu(){
             var data=res.data;
             var item;
             $.each(data,function (i, result) {
-                item="<li><div class='chanliang'><div class='add'>"+result['name']+"</div><div class='wd'><h5>当前温度</h5><p class='chaoxian'>"+result['wendu']+"</p></div>"+
-                     "<div class='sd'><h5>当前湿度</h5><p class='chaoxian'>"+result['shidu']+"</p></div></div></li>";
+                item="<li><div class='chanliang'><div class='add'>"+result['name']+"</div><div class='wd'><h5>当前温度</h5><p class='chaoxian'>"+result['wendu']+"℃</p></div>"+
+                     "<div class='sd'><h5>当前湿度</h5><p class='chaoxian'>"+result['shidu']+"%RH</p></div></div></li>";
                 $('#wsd').append(item)
             })
         }

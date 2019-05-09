@@ -59,6 +59,9 @@ function chanliang_xiaolv() {
                 dysumxl+=lj_xl_arry[i];
             }
             var dyavg=(dysumxl/lj_xl_arry.length).toFixed(2);
+            if(dyavg==null || dyavg=="NaN" || dyavg=="undefined"){
+                dyavg=0;
+            }
             $('#lj_tboday').append("<tr><td>汇总</td><td>"+dysum+"</td><td>"+dyavg+"%</td></tr>");
 
 

@@ -7,7 +7,6 @@ function chanliangyuebao() {
         dataType:'json',
         data:{},
         success: function(res){
-
             var data=res.data.datas;
             var cl=[],rq=[],xl=[];
             var sum=0;
@@ -24,8 +23,11 @@ function chanliangyuebao() {
                 sumxl+=xl[i];
             }
             var avg=(sumxl/xl.length).toFixed(2);
+            if(avg==null || avg=="NaN" || avg=="undefined"){
+                avg=0;
+            }
             $("#cl").text(sum);
-            $("#xl").text(avg);
+            $("#xl").text(avg+"%");
             var wd = echarts.init(document.getElementById('grsj_cl'));
             var option = {
                 //  	  backgroundColor: '#b8ddf0',

@@ -84,11 +84,11 @@ function bjss() {
             var data=res.data.datas;
             var item;
             $.each(data,function (i, result) {
-                item="<li><div class='mui-row'><div class='mui-col-xs-12 mui-text-center cl_bc'>"+result['jitaihao']+""/""+result['xingming']+"</div>"+
+                item="<li><div class='mui-row'><div class='mui-col-xs-12 mui-text-center cl_bc'>"+result['jitaihao']+"/"+result['xingming']+"</div>"+
                      "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>品种<span>"+result['pibuguige']+"</span></div>"+
                      "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>合约号<span>"+result['name']+"</span></div>"+
                      "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>车速<span>"+result['chesu']+"</span></div>"+
-                     "<div class='mui-col-xs-3 mui-text-center hzcl'>效率<span>"+result['xiaolv']+"</span></div></div>"+
+                     "<div class='mui-col-xs-3 mui-text-center hzcl'>效率<span>"+result['xiaolv']+"%</span></div></div>"+
                      "<div class='mui-row'><div class='mui-col-xs-3 mui-text-center hzcl fgx'>总经停次数<span>"+result['zongting']+"</span></div>"+
                      "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>经停次数<span>"+result['jingting']+"</span></div>"+
                      "<div class='mui-col-xs-3 mui-text-center hzcl fgx'>纬停次数<span>"+result['weiting']+"</span></div>"+
