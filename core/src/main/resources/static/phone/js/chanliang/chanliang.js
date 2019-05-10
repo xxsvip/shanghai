@@ -206,9 +206,6 @@ function lunbanchanliang(){
             $("#flb_cl").html("");
             var columns=res.data.columns;
 
-            $("#drlbcl").html(columns[0].drchangdu);
-            $("#xllb").html(columns[0].xiaov+"%");
-            $("#dylbcl").html(columns[0].dychangdu);
             var data=res.data.datas;
             var item;
             $.each(data,function (i, result) {
