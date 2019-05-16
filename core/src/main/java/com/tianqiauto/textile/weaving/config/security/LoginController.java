@@ -47,6 +47,21 @@ public class LoginController {
         return "/main";
     }
 
+    @RequestMapping("/phone/login-error.html")
+    public String phoneLoginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "/phone/login";
+    }
+
+    @RequestMapping("/phone/login.html")
+    public String phoneLogin() {
+        return "/phone/login";
+    }
+
+    @RequestMapping("/phone/form")
+    public String phoneIndex(Model model){
+        return "/phone/index";
+    }
 
 
     @GetMapping("logout")

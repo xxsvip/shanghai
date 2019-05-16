@@ -3,6 +3,7 @@ package com.tianqiauto.textile.weaving.config.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Component;
  * @Date 2019-02-19 17:00
  * @Version 1.0
  **/
+
+@Order(1)
 @Configuration
 @EnableWebSecurity  //开启Spring Security的功能
 @EnableGlobalMethodSecurity(prePostEnabled = true) //可以开启security的注解，我们可以在需要控制权限的方法上面使用@PreAuthorize，@PreFilter这些注解
@@ -56,18 +59,89 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 //                    .csrf().disable();
 
 
+
         http.formLogin()
-                    .loginPage("/login.html")
-                    .loginProcessingUrl("/authentication/form")
-                    .failureUrl("/login-error.html")
+                .loginPage("/login.html")
+                .loginProcessingUrl("/authentication/form")
+                .failureUrl("/login-error.html")
 //                    .defaultSuccessUrl("/", true)
                 .and()
-                    .authorizeRequests()
-                    .antMatchers("/login.html","/login-error.html","/layuiadmin/**","/js/**","/images/**","/css/**","/phone/**").permitAll()  //不permit login.html页面会出现重定向次数过多错误
-                    .anyRequest()
-                    .authenticated()
+                .authorizeRequests()
+                .antMatchers("/login.html","/login-error.html","/layuiadmin/**","/js/**","/images/**","/css/**","/phone/**").permitAll()  //不permit login.html页面会出现重定向次数过多错误
+                .anyRequest()
+                .authenticated()
                 .and()
-                    .csrf().disable();
+                .csrf().disable();
+
+
+
+
+        // 允许同源的iframe页面嵌套
+        http.headers().frameOptions().sameOrigin();
+    }
+
+
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();   //BCryptPasswordEncoder
+    }
+}
+
+
+
+@Order(2)
+@Configuration
+@EnableWebSecurity  //开启Spring Security的功能
+@EnableGlobalMethodSecurity(prePostEnabled = true) //可以开启security的注解，我们可以在需要控制权限的方法上面使用@PreAuthorize，@PreFilter这些注解
+class PhoneSecurityConfig extends WebSecurityConfigurerAdapter
+{
+
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());  //加密UserDetails中包含的密码信息，并和数据库中
+    }
+
+
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+
+//        http
+//                    .authorizeRequests()
+//                    .anyRequest().permitAll()
+//                .and()
+//                     .formLogin()
+//                .and()
+//                     .httpBasic()
+//                .and()
+//                    .csrf().disable();
+
+
+
+
+
+        http.formLogin()
+                .loginPage("/phone/login.html")
+                .loginProcessingUrl("/phone/form")
+                .defaultSuccessUrl("/phone/index.html")
+                .failureUrl("/phone/login-error.html")
+//                    .defaultSuccessUrl("/", true)
+                .and()
+                .authorizeRequests()
+                .antMatchers("/login.html","/login-error.html","/layuiadmin/**","/js/**","/images/**","/css/**","/phone/**").permitAll()  //不permit login.html页面会出现重定向次数过多错误
+                .anyRequest()
+                .authenticated()
+                .and()
+                .csrf().disable();
 
 
         // 允许同源的iframe页面嵌套

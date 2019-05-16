@@ -13,10 +13,13 @@ function chuanzhong_jihua() {
             $.each(data,function (i, result) {
                 item="<tr><td>"+result['xuhao']+"</td><td>"+result['riqi']+"</td><td>"+result['banci']+"</td><td>"+result['pibuguige']+"</td><td>"+result['heyuehao']+"</td><td>"+result['jitaihao']+"</td><td>"+result['zhoushu']+"</td><td>已生产"+result['status']+"个轴</td><td>";
                 $('#body').append(item);
-            })
+            });
+
         }
     });
 
+    setInterval(chuanzhong_jihua(), 5000);
 }
+
 
 chuanzhong_jihua();

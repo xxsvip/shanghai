@@ -16,12 +16,14 @@ function chanliang_xiaolv() {
             var columns=res.data.columns;
             var dr;
             var zu_arry=[];//轮班
+            var dr_zu_zrry=[];//当日轮班
             var day_zl_arry = [];//当日产量
             var day_xl_arry = [];//当日效率
             var lj_zl_arry = [];//当月产量
             var lj_xl_arry= [];//当月效率
             //当日产量效率详情
             $.each(data,function (i, result) {
+                dr_zu_zrry.push(result['name']);
                 day_xl_arry.push(result['xiaolv']);
                 day_zl_arry.push(result['drcl']);
                 dr="<tr><td>"+result['name']+"</td><td>"+result['drcl']+"</td><td>"+result['xiaolv']+"%</td></tr>";
@@ -86,7 +88,7 @@ function chanliang_xiaolv() {
                 xAxis: [
                     {
                         type: 'category',
-                        data: zu_arry,
+                        data: dr_zu_zrry,
                         axisPointer: {
                             type: 'shadow'
                         }
