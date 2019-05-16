@@ -25,7 +25,7 @@ layui.define(['table', 'form', 'laydate'], function(exports){
         ,{templet: repNull('jieshubanci.name'), title: '结束班次', field:'jieshubanci.name'}
         ,{align: 'center',title: '操作',toolbar: '#barDemo'}
     ];
-    initTable("table", 'jichushezhi/pancunyue/findAll', 'get',[cols], table,"form");
+    tableIns = initTable("table", 'jichushezhi/pancunyue/findAll', 'get',[cols], table,"form");
 
     form.on('submit(form_search)',function(data){
         var field = getParams("form");
