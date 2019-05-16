@@ -8,12 +8,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
 
 /**
  * @ClassName SecurityConfig
@@ -43,17 +39,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+
+//        http
+//                    .authorizeRequests()
+//                    .anyRequest().permitAll()
+//                .and()
+//                     .formLogin()
+//                .and()
+//                     .httpBasic()
+//                .and()
+//                    .csrf().disable();
+
+
         http.formLogin()
                     .loginPage("/login.html")
                     .loginProcessingUrl("/authentication/form")
                     .failureUrl("/login-error.html")
+//                    .defaultSuccessUrl("/", true)
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/login.html","/login-error.html").permitAll()  //不permit login.html页面会出现重定向次数过多错误
+                    .antMatchers("/login.html","/login-error.html","/layuiadmin/**","/js/**","/images/**","/css/**").permitAll()  //不permit login.html页面会出现重定向次数过多错误
                     .anyRequest()
                     .authenticated()
                 .and()
                     .csrf().disable();
+
+
+        // 允许同源的iframe页面嵌套
+        http.headers().frameOptions().sameOrigin();
     }
 
 
@@ -62,5 +75,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+//        return NoOpPasswordEncoder.getInstance();   //BCryptPasswordEncoder
     }
 }

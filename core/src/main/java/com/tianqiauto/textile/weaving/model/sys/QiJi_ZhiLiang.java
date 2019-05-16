@@ -1,10 +1,12 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +23,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_qiji_zhiliang")
+@EqualsAndHashCode(exclude = {"banci","jitaihao","heyuehao"})
+@ToString(exclude = {"banci","jitaihao","heyuehao"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class QiJi_ZhiLiang {
 
 
@@ -28,6 +34,7 @@ public class QiJi_ZhiLiang {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date riqi;
 
     @ManyToOne    //可以为空，因为起机报表上没有此字段
@@ -54,9 +61,23 @@ public class QiJi_ZhiLiang {
     private String jishangkongzhiweimi;  //机上控制纬密
 
 
+    private String beizhu; //备注
 
 
+    @Column
+    @CreatedDate
+    private Date createTime;
 
+
+    //查询条件
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date kaishiriqi;//开始日期
+
+    //查询条件
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date jieshuriqi;//开始日期
 
 
 

@@ -1,10 +1,9 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
-import com.tianqiauto.textile.weaving.model.base.Dict;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +20,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_beam_zhizhou_shift")
+@EqualsAndHashCode(exclude = {"zhizhou","heyuehao","jitaihao_zhengjing","jitaihao_jiangsha_shangche","jitaihao_chuanzong","jitaihao_buji"})
+@ToString(exclude = {"zhizhou","heyuehao","jitaihao_zhengjing","jitaihao_jiangsha_shangche","jitaihao_chuanzong","jitaihao_buji"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Beam_ZhiZhou_Shift {
 
     @Id
@@ -28,9 +30,11 @@ public class Beam_ZhiZhou_Shift {
     private Long id;
 
 
+
+
     @ManyToOne
     @JoinColumn(name = "zhizhou_id")
-    private Beam_JingZhou zhizhou; //轴
+    private Beam_ZhiZhou zhizhou; //轴
 
 
     @ManyToOne
@@ -53,11 +57,14 @@ public class Beam_ZhiZhou_Shift {
 
     private Date jiangsha_time_shangche; //浆纱上机时间
 
+
     @ManyToOne
     @JoinColumn(name = "jth_jiangsha_xiache")
     private SheBei jitaihao_jiangsha_xiache;  //机台号
 
     private Date jiangsha_time_xiache; //浆纱下机时间
+
+    private String ganghao;  // 缸号
 
     @ManyToOne
     @JoinColumn(name = "jth_chuanzong")
@@ -81,7 +88,8 @@ public class Beam_ZhiZhou_Shift {
 
     private String beizhu;   //备注
 
-
+    @CreatedDate
+    private Date createTime;
 
 
 }
