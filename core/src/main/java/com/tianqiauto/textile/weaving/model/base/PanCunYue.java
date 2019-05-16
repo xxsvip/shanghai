@@ -29,13 +29,31 @@ public class PanCunYue {
 
     private String yue;  //月
 
+    private String kaishiriqi;
+
+    @ManyToOne
+    @JoinColumn(name = "kaishibanci_id")
+    private Dict kaishibanci;
+
+    private String jieshuriqi;
+
+    @ManyToOne
+    @JoinColumn(name = "jieshubanci_id")
+    private Dict jieshubanci;
+
 
     private String kaishi; //开始时间+班次
 
     private String jieshu; //结束时间+班次
 
 
+    public void setKaishi(String kaishiriqi,Dict kaishibanci){
+        this.kaishi = kaishiriqi.replaceAll("-","")+kaishibanci.getValue();
+    }
 
+    public void setJieshu(String jieshuriqi,Dict jieshubanci){
+        this.jieshu = jieshuriqi.replaceAll("-","")+jieshubanci.getValue();
+    }
 
 
 

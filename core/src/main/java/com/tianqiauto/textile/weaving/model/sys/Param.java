@@ -1,9 +1,7 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
-import com.tianqiauto.textile.weaving.model.base.Gongxu;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -19,6 +17,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_param")
+@EqualsAndHashCode(exclude = {"leiBie"})
+@ToString(exclude = {"leiBie"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Param {
 
     @Id
@@ -45,10 +46,6 @@ public class Param {
 
     private Integer cunchushichang; //存储时长 单位为小时
 
-
-
-
     private Integer xuhao;  //参数类别展示顺序
-
 
 }

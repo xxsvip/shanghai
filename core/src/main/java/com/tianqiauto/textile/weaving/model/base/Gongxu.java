@@ -1,11 +1,9 @@
 package com.tianqiauto.textile.weaving.model.base;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * @ClassName SheBei
@@ -18,6 +16,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "base_gongxu")
+@EqualsAndHashCode(exclude = {"parentGongxu"})
+@ToString(exclude = {"parentGongxu"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Gongxu {
 
 
@@ -32,7 +33,7 @@ public class Gongxu {
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    private Gongxu parent_gongxu; //父工序
+    private Gongxu parentGongxu; //父工序
 
 
 

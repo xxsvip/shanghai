@@ -1,13 +1,17 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.tianqiauto.textile.weaving.model.base.User;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @ClassName Shift_Zhengjing
@@ -21,13 +25,19 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_shift_zhengjing")
+@EqualsAndHashCode(exclude = {"banci","jitaihao","heyuehao","users"})
+@ToString(exclude = {"banci","jitaihao","heyuehao","users"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class Shift_Zhengjing {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date riqi;
+
     @ManyToOne
     @JoinColumn(name = "banci_id")
     private Dict banci;
@@ -40,11 +50,26 @@ public class Shift_Zhengjing {
     @JoinColumn(name = "heyuehao_id")
     private Heyuehao heyuehao;
 
+    private Integer flag; //1.轴，2.桶
+
 
     private Double changdu; //长度
 
+    private Integer shifouwancheng;  //是否完成：为1时完成 为0时未完成
+
+    private Integer tiaoshu; //条数（分条整经登记桶时登记条数和长度）
 
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "sys_shift_zhengjing_user", joinColumns = @JoinColumn(name = "shift_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users;
 
+    private String beizhu;   //备注
+
+
+    @Column
+    @CreatedDate
+    private Date createTime;
 
 }

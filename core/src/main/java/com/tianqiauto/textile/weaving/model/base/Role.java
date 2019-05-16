@@ -1,9 +1,7 @@
 package com.tianqiauto.textile.weaving.model.base;
 
 import com.fasterxml.jackson.annotation.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,6 +18,9 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = {"users","permissions"})
+@ToString(exclude = {"users","permissions"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
 
 
@@ -28,12 +29,18 @@ public class Role {
     private Long id;
     private String name;
 
-    @ManyToMany
+    private String beizhu;
+
+    @JsonIgnoreProperties("roles")
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+
+    @JsonIgnoreProperties("roles")
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "base_role_permission", joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
     private Set<Permission> permissions;
 
-//    @ManyToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-//    private Set<User> users;
 
 }

@@ -1,12 +1,14 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,6 +23,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_heyuehao")
+@EqualsAndHashCode(exclude = {"order","jingsha","weisha","gongYi"})
+@ToString(exclude = {"order","jingsha","weisha","gongYi"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Heyuehao {
     /**
      *
@@ -30,50 +35,55 @@ public class Heyuehao {
      *
      *
      */
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//
-//    @ManyToOne
-//    @JoinColumn(name = "order_id")
-//    private Order order; //订单
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonIgnoreProperties("heyuehaos")
+    private Order order; //订单
 
 
     private String name; //合约号
 
+    private String kehubianhaomiaoshu;//客户编号描述
 
+    @JsonIgnoreProperties("jingsha")
     @ManyToMany
     @JoinTable(name = "sys_heyuehao_yuansha_jingsha",joinColumns = @JoinColumn(name = "heyuehao_id"),
             inverseJoinColumns = @JoinColumn(name = "jingsha_id"))
     private Set<Heyuehao_YuanSha> jingsha; //经纱
 
+    @JsonIgnoreProperties("weisha")
     @ManyToMany
     @JoinTable(name = "sys_heyuehao_yuansha_weisha",joinColumns = @JoinColumn(name = "heyuehao_id"),
             inverseJoinColumns = @JoinColumn(name = "weisha_id"))
     private Set<Heyuehao_YuanSha> weisha; //纬纱
 
-
-
-
-
-
     private String beizhu; //备注
 
 
+    @JsonIgnoreProperties("heyuehao")
+    @OneToOne
+    @JoinColumn(name = "gongyi_id")
+    private GongYi gongYi;
+
+    @Column(precision = 18, scale = 4)
+    private BigDecimal zhisuo;//织缩
+
+
+    @Column
     @CreatedDate
     private Date createTime;
+    @Column
+    @CreatedBy
     private String  luruRen;
+    @Column
     @LastModifiedDate
     private Date lastModifyTime;
+    @Column
+    @LastModifiedBy
     private String lastModifyRen;
-
-
-
-
-
 
 }

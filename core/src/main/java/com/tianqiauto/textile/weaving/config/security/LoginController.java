@@ -6,13 +6,10 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
 
 /**
  * @ClassName LoginController
@@ -29,20 +26,20 @@ public class LoginController {
     @RequestMapping("/login-error.html")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
-        return "/login";
+        return "login";
     }
 
     @RequestMapping("/login.html")
     public String login() {
-        return "/login";
+        return "login";
     }
 
 
 
 
-    @GetMapping("index")
-    public String index(){
-        return "/index";
+    @RequestMapping("/")
+    public String index(Model model){
+        return "main";
     }
 
 
@@ -50,10 +47,11 @@ public class LoginController {
     @GetMapping("logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login.html";
+        return "redirect:login.html";
     }
 
 

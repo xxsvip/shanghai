@@ -1,8 +1,7 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,6 +17,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_jiangsha_zhiliang")
+@EqualsAndHashCode(exclude = {"heyuehao"})
+@ToString(exclude = {"heyuehao"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class JiangSha_ZhiLiang {
 
 
@@ -43,6 +45,7 @@ public class JiangSha_ZhiLiang {
     private String jiangshazongchangdu;  //浆纱总长度m
     private String shenchang;  //伸长
 
+    private String beizhu; //备注
 
 
 

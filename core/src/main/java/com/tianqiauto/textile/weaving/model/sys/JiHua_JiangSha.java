@@ -1,15 +1,15 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @ClassName Order
@@ -23,6 +23,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_jihua_jiangsha")
+@EqualsAndHashCode(exclude = {"jiHua_jiangSha_zhiZhouSet","jiHua_jiangSha_main","banci","heyuehao","jitaihao","status"})
+@ToString(exclude = {"jiHua_jiangSha_zhiZhouSet","jiHua_jiangSha_main","banci","heyuehao","jitaihao","status"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class JiHua_JiangSha {
 
 
@@ -66,10 +69,10 @@ public class JiHua_JiangSha {
     private Dict status;//状态  计划已下达/整经生产中/整经已完成/浆纱生产中/浆纱已完成
 
 
-
-
-
-
+    @JsonIgnoreProperties("JiHuaJiangShas")
+    @OneToMany
+    @JoinColumn(name = "jiangshajihua_id")
+    private Set<JiHua_JiangSha_ZhiZhou> jiHua_jiangSha_zhiZhouSet; //合约号
 
     @CreatedDate
     private Date createTime;
