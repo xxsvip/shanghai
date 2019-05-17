@@ -6,6 +6,7 @@ import com.tianqiauto.textile.weaving.model.base.SheBei;
 import com.tianqiauto.textile.weaving.model.base.User;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -40,12 +41,14 @@ public class BuGun {
     private Long id;
 
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date riqi;
 
     @ManyToOne
     @JoinColumn(name = "banci_id")
     private Dict banci;
 
+    @Column
     private Date luobushijian;//落布时间
 
     @ManyToOne
@@ -78,6 +81,26 @@ public class BuGun {
     @ManyToOne
     @JoinColumn(name = "zhizhou_right_id")
     private Beam_ZhiZhou zhiZhou_right;
+
+    @ManyToOne
+    @JoinColumn(name = "beam_zhizhou_shift_left_id")
+    private Beam_ZhiZhou_Shift beam_zhiZhou_shift_left;
+
+    @ManyToOne
+    @JoinColumn(name = "beam_zhizhou_shift_right_id")
+    private Beam_ZhiZhou_Shift beam_zhiZhou_shift_right;
+
+
+
+
+    //查询条件
+    @Transient
+    private Integer kaishixuhao;
+
+    //查询条件
+    @Transient
+    private Integer jieshuxuhao;
+
 
 
 
