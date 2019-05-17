@@ -16,7 +16,7 @@
             <div class="layui-header">
                 <ul class="layui-nav layui-layout-left">
                     <li class="layui-nav-item layadmin-flexible" lay-unselect>
-                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <a href="javascript:" layadmin-event="flexible" title="侧边伸缩">
                             <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
                         </a>
                     </li>
@@ -26,7 +26,7 @@
                         <!--</a>-->
                     <!--</li>-->
                     <li class="layui-nav-item" lay-unselect>
-                        <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <a href="javascript:" layadmin-event="refresh" title="刷新">
                             <i class="layui-icon layui-icon-refresh-3"></i>
                         </a>
                     </li>
@@ -45,27 +45,27 @@
                         </a>
                     </li>
                     <li class="layui-nav-item layui-hide-xs" lay-unselect>
-                        <a href="javascript:;" layadmin-event="theme">
+                        <a href="javascript:" layadmin-event="theme">
                             <i class="layui-icon layui-icon-theme"></i>
                         </a>
                     </li>
                     <li class="layui-nav-item layui-hide-xs" lay-unselect>
-                        <a href="javascript:;" layadmin-event="note">
+                        <a href="javascript:" layadmin-event="note">
                             <i class="layui-icon layui-icon-note"></i>
                         </a>
                     </li>
                     <li class="layui-nav-item layui-hide-xs" lay-unselect>
-                        <a href="javascript:;" layadmin-event="fullscreen">
+                        <a href="javascript:" layadmin-event="fullscreen">
                             <i class="layui-icon layui-icon-screen-full"></i>
                         </a>
                     </li>
                     <li class="layui-nav-item" lay-unselect style="margin-right: 20px">
-                        <a href="javascript:;">
+                        <a href="javascript:">
                             <cite th:text="${#authentication.getPrincipal().getUser().getXingming()}"></cite>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a lay-href="/forward/jichushezhi/info">基本资料</a></dd>
-                            <dd><a lay-href="/forward/jichushezhi/password">修改密码</a></dd>
+                            <dd><a lay-href="forward/jichushezhi/info">基本资料</a></dd>
+                            <dd><a lay-href="forward/jichushezhi/password">修改密码</a></dd>
                             <hr>
                             <dd style="text-align: center;"><a th:href="@{/logout}">退出</a></dd>
                         </dl>
@@ -92,88 +92,239 @@
                     </div>
 
                     <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-
-
-                        <li data-name="user" class="layui-nav-item">
-                            <a href="javascript:;" lay-tips="用户" lay-direction="2">
-                                <i class="layui-icon layui-icon-user"></i>
-                                <cite>用户</cite>
+                        <li data-name="shishishuju" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="实时数据" lay-direction="2">
+                                <i class="layui-icon layui-icon-template-1"></i>
+                                <cite>实时数据</cite>
                             </a>
-                            <dl class="layui-nav-child">
-                                <dd>
-                                    <a lay-href="user/user/list.html">网站用户</a>
-                                </dd>
-                                <dd>
-                                    <a lay-href="user/administrators/list.html">后台管理员</a>
-                                </dd>
-                                <dd>
-                                    <a lay-href="user/administrators/role.html">角色管理</a>
-                                </dd>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/chejianzonglan">车间总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/jingzhou">经轴实时查看</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/zhizhou">织轴实时查看</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/wenshidu">温湿度总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/zhengjingzonglan">整经总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/jiangshazonglan">浆纱总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/chuanzongzonglan">穿综总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/bujizonglan">布机总览</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/liaojiyuce">布机了机预测</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/shishishuju/luobuyuce">布机落布预测</a></dd>
                             </dl>
                         </li>
                         <li data-name="jichushezhi" class="layui-nav-item">
-                            <a href="javascript:;" lay-tips="基础设置" lay-direction="2">
+                            <a href="javascript:" lay-tips="基础设置" lay-direction="2">
                                 <i class="layui-icon layui-icon-set"></i>
                                 <cite>基础设置</cite>
                             </a>
                             <dl class="layui-nav-child" >
-                                <dd><a lay-href="/forward/jichushezhi/user">用户管理</a></dd>
-                                <dd><a lay-href="/forward/jichushezhi/pancunyue">盘存月管理</a></dd>
+                                <dd><a lay-href="forward/jichushezhi/user">用户管理</a></dd>
+                                <dd><a lay-href="forward/jichushezhi/pancunyue">盘存月管理</a></dd>
                                 <dd class="layui-nav-itemed">
-                                    <a href="javascript:;">角色权限管理</a>
+                                    <a href="javascript:">角色权限管理</a>
                                     <dl class="layui-nav-child">
-                                        <dd><a lay-href="/forward/jichushezhi/permission">权限管理</a></dd>
-                                        <dd><a lay-href="/forward/jichushezhi/role">角色管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/permission">权限管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/role">角色管理</a></dd>
                                     </dl>
                                 </dd>
                                 <dd class="layui-nav-itemed">
-                                    <a href="javascript:;">排班管理</a>
+                                    <a href="javascript:">排班管理</a>
                                     <dl class="layui-nav-child">
-                                        <dd><a lay-href="/forward/jichushezhi/gongxupaiban">工序对应排班</a></dd>
-                                        <dd><a lay-href="/forward/jichushezhi/yunzhuanfangshi">运转方式管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/gongxupaiban">工序对应排班</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/yunzhuanfangshi">运转方式管理</a></dd>
+                                    </dl>
+                                </dd>
+                                <dd class="layui-nav-itemed">
+                                    <a href="javascript:">车间大屏管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/jichushezhi/tongzhigonggao">通知公告管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/zhanshiyemian">展示页面管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/dianshifangan">电视方案管理</a></dd>
+                                    </dl>
+                                </dd>
+                                <dd class="layui-nav-itemed">
+                                    <a href="javascript:">设备管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/jichushezhi/shebeiguanli">设备管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/shebeiparam">设备参数管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/shebeiparamtype">设备参数类别管理</a></dd>
+                                    </dl>
+                                </dd>
+                                <dd class="layui-nav-itemed">
+                                    <a href="javascript:">经织轴管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/jichushezhi/jingzhouguanli">经轴管理</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/zhizhouguanli">织轴管理</a></dd>
+                                    </dl>
+                                </dd>
+                                <dd class="layui-nav-itemed">
+                                    <a href="javascript:">车位管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/jichushezhi/zhibuchewei">固定车位管理</a></dd>
+                                    </dl>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/jichushezhi/zhibucheweiCurrent">临时车位管理</a></dd>
                                     </dl>
                                 </dd>
                             </dl>
                         </li>
                         <li data-name="xitongshezhi" class="layui-nav-item">
-                            <a href="javascript:;" lay-tips="系统设置" lay-direction="2">
+                            <a href="javascript:" lay-tips="系统设置" lay-direction="2">
                                 <i class="layui-icon layui-icon-user"></i>
                                 <cite>系统设置</cite>
                             </a>
                             <dl class="layui-nav-child" >
-                                <dd><a lay-href="/forward/xitongshezhi/shujuzidian">数据字典</a></dd>
+                                <dd><a lay-href="forward/xitongshezhi/shujuzidian">数据字典</a></dd>
                             </dl>
                         </li>
                         <li data-name="dingdanguanli" class="layui-nav-item">
-                            <a href="javascript:;" lay-href="/forward/dingdanguanli/dingdanguanli" lay-tips="订单管理" lay-direction="2">
+                            <a href="javascript:" lay-href="forward/dingdanguanli/dingdanguanli" lay-tips="订单管理" lay-direction="2">
                                 <i class="layui-icon layui-icon-form"></i>
                                 <cite>订单管理</cite>
                             </a>
                         </li>
                         <li data-name="heyuehaoguanli" class="layui-nav-item">
-                            <a href="javascript:;" lay-href="/dingdanguanli/heyuehaoguanli/heyuehao_page" lay-tips="合约号管理" lay-direction="2">
+                            <a href="javascript:" lay-href="dingdanguanli/heyuehaoguanli/heyuehao_page" lay-tips="合约号管理" lay-direction="2">
                                 <i class="layui-icon layui-icon-note"></i>
                                 <cite>合约号管理</cite>
                             </a>
                         </li>
+                        <li data-name="gongyi" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="工艺管理" lay-direction="2">
+                                <i class="layui-icon layui-icon-user"></i>
+                                <cite>工艺管理</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/gongyi/gongyi">工艺管理</a></dd>
+                            </dl>
+                        </li>
+
+                        <li data-name="cangkuguanli" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="仓库管理" lay-direction="2">
+                                <i class="layui-icon layui-icon-set"></i>
+                                <cite>仓库管理</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd class="">
+                                    <a href="javascript:">原纱管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/yuanshaguanli/yuansharukudengji">原纱入库登记</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuansharukushenqing">原纱入库申请</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuansharukuqueren">原纱入库确认</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuanshachukudengji">原纱出库登记</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuanshachukushenqing">原纱出库申请</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuanshachukuqueren">原纱出库确认</a></dd>
+                                        <dd><a lay-href="forward/yuanshaguanli/yuanshakucunchakan">原纱库存查看</a></dd>
+                                    </dl>
+                                </dd>
+                                <dd class="">
+                                    <a href="javascript:">成品管理</a>
+                                    <dl class="layui-nav-child">
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinrukudengji">成品入库登记</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinrukushenqing">成品入库申请</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinrukuqueren">成品入库确认</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinchukudengji">成品出库登记</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinchukushenqing">成品出库申请</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinchukuqueren">成品出库确认</a></dd>
+                                        <dd><a lay-href="forward/chengpinguanli/chengpinkucunchakan">成品库存查看</a></dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li data-name="jihuaguanli" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="计划管理" lay-direction="2">
+                                <i class="layui-icon layui-icon-tabs"></i>
+                                <cite>计划管理</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/">整经计划下达</a></dd>
+                                <dd><a lay-href="forward/">浆纱计划下达</a></dd>
+                                <dd><a lay-href="forward/jihuaguanli/chuanzongjihuaxiada">穿综计划下达</a></dd>
+                                <dd><a lay-href="forward/jihuaguanli/bujijihuaxiada">布机计划下达</a></dd>
+                            </dl>
+                        </li>
+                        <li data-name="xitongshezhi" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="计划执行" lay-direction="2">
+                                <i class="layui-icon layui-icon-tabs"></i>
+                                <cite>计划执行</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/">整经执行登记</a></dd>
+                                <dd><a lay-href="forward/jihuaguanli/">浆纱执行登记</a></dd>
+                                <dd><a lay-href="forward/jihuaguanli/chuanzongjihuazhixing">穿综执行登记</a></dd>
+                                <dd><a lay-href="forward/jihuaguanli/bujijihuazhixing">布机执行登记</a></dd>
+                            </dl>
+                        </li>
+
+                        <li data-name="zhiliangguanli" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="质量管理" lay-direction="2">
+                                <i class="layui-icon layui-icon-list"></i>
+                                <cite>质量管理</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/zhiliang/yuansha">原纱质量</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/zhiliang/jiangsha">浆纱质量</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/zhiliang/qiji">起机质量</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/zhiliang/chengpin">成品质量</a></dd>
+                            </dl>
+                        </li>
+
+                        <li data-name="jiaobandengji" class="layui-nav-item">
+                            <a href="javascript:" lay-tips="交班产量登记" lay-direction="2">
+                                <i class="layui-icon layui-icon-survey"></i>
+                                <cite>交班产量登记</cite>
+                            </a>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/jiaobandengji/zhengjingdengji">整经产量登记</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/jiaobandengji/jiangshadengji">浆纱产量登记</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child" >
+                                <dd><a lay-href="forward/jiaobandengji/chuanzongdengji">穿综产量登记</a></dd>
+                            </dl>
+                        </li>
+
+                        <li data-name="bugun" class="layui-nav-item">
+                            <a href="javascript:" lay-href="forward/bugun/bugunjilu" lay-tips="布辊产出记录" lay-direction="2">
+                                <i class="layui-icon layui-icon-list"></i>
+                                <cite>布辊产出记录</cite>
+                            </a>
+                        </li>
+
                         <li data-name="set" class="layui-nav-item">
-                            <a href="javascript:;" lay-tips="设置" lay-direction="2">
+                            <a href="javascript:" lay-tips="设置" lay-direction="2">
                                 <i class="layui-icon layui-icon-set"></i>
                                 <cite>设置</cite>
                             </a>
                             <dl class="layui-nav-child">
                                 <dd class="layui-nav-itemed">
-                                    <a href="javascript:;">系统设置</a>
+                                    <a href="javascript:">我的设置</a>
                                     <dl class="layui-nav-child">
-                                        <dd><a lay-href="set/system/website.html">网站设置</a></dd>
-                                        <dd><a lay-href="set/system/email.html">邮件服务</a></dd>
-                                    </dl>
-                                </dd>
-                                <dd class="layui-nav-itemed">
-                                    <a href="javascript:;">我的设置</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a lay-href="/forward/jichushezhi/info">基本资料</a></dd>
-                                        <dd><a lay-href="/forward/jichushezhi/password">修改密码</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/info">基本资料</a></dd>
+                                        <dd><a lay-href="forward/jichushezhi/password">修改密码</a></dd>
                                     </dl>
                                 </dd>
                             </dl>
@@ -193,11 +344,11 @@
                 <div class="layui-icon layadmin-tabs-control layui-icon-down">
                     <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
                         <li class="layui-nav-item" lay-unselect>
-                            <a href="javascript:;"></a>
+                            <a href="javascript:"></a>
                             <dl class="layui-nav-child layui-anim-fadein">
-                                <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
-                                <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
-                                <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                                <dd layadmin-event="closeThisTabs"><a href="javascript:">关闭当前标签页</a></dd>
+                                <dd layadmin-event="closeOtherTabs"><a href="javascript:">关闭其它标签页</a></dd>
+                                <dd layadmin-event="closeAllTabs"><a href="javascript:">关闭全部标签页</a></dd>
                             </dl>
                         </li>
                     </ul>

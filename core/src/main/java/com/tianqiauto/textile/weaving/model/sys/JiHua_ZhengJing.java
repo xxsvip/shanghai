@@ -1,13 +1,14 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
 import com.tianqiauto.textile.weaving.model.base.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,13 +25,11 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_jihua_zhengjing")
+@EqualsAndHashCode(exclude = {"jiHua_zhengJing_main","jiHua_jiangSha","banci","jitaihao","heyuehao","status"})
+@ToString(exclude = {"jiHua_zhengJing_main","jiHua_jiangSha","banci","jitaihao","heyuehao","status"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class JiHua_ZhengJing {
-
-
-    /**
-     *
-     */
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,34 +54,17 @@ public class JiHua_ZhengJing {
     //直接下达整经计划，输入：日期、班次、机台、合约号、轴数（有几个轴后台生成几条记录）、优先级、备注
 
    // 整经下机确认：序号（日期+时间+班次+机台号+合约号+轴号）
-    private Date riqi; //计划整经完成日期
-
-    @ManyToOne
-    @JoinColumn(name = "banci_id")
-    private Dict banci;
+//    private Date riqi; //计划整经完成日期
 
     @ManyToOne
     @JoinColumn(name = "shebei_id")
     private SheBei jitaihao; //机台号
 
     @ManyToOne
-    @JoinColumn(name = "heyuehao_id")
-    private Heyuehao heyuehao;
-
-
-    private Integer Youxianji; //优先级 1最高 2 3 4
-
-
-
-
-    @ManyToOne
     @JoinColumn(name = "status_id")
     private Dict status;//状态
 
-
     private String beizhu;   //备注
-
-
 
     @CreatedDate
     private Date createTime;
@@ -91,6 +73,14 @@ public class JiHua_ZhengJing {
     private Date lastModifyTime;
     private String lastModifyRen;
 
+    //查询使用条件
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date kaishiriqi;//开始日期
+
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date jieshuriqi;//结束日期
 
 
 

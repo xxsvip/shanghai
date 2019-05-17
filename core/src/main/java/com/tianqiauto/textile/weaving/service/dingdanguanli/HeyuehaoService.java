@@ -12,6 +12,7 @@ import com.tianqiauto.textile.weaving.util.procedure.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,9 +77,6 @@ public class HeyuehaoService {
 
     public Object findAllPage(Heyuehao heyuehao, Pageable pageable) {
 
-
-
-
         Specification<Heyuehao> specification = (root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList();
             //合约号
@@ -97,5 +95,10 @@ public class HeyuehaoService {
 
     public List<Heyuehao> findByName(String name) {
         return heYueHaoRepository.findAllByName(name);
+    }
+
+    public List<Heyuehao> findAll(){
+        String sql = "SELECT id,beizhu,luru_ren,name,order_id,kehubianhaomiaoshu,zhisuo FROM sys_heyuehao";
+        return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Heyuehao>(Heyuehao.class));
     }
 }

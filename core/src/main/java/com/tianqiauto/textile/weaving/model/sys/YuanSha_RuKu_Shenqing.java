@@ -1,12 +1,13 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,10 +23,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_yuansha_ruku_shenqing")
+@EqualsAndHashCode(exclude = {"yuanShaRuKu","yuanSha","laiyuan","status","heyuehao"})
+@ToString(exclude = {"yuanShaRuKu","yuanSha","laiyuan","status","heyuehao"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class YuanSha_RuKu_Shenqing {
 
 
-
+    @OneToOne(mappedBy="yuanSha_ruKu_shenqing")
+    @JsonIgnoreProperties("yuanSha_ruKu_shenqing")
+    private YuanSha_RuKu yuanShaRuKu;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,20 +60,9 @@ public class YuanSha_RuKu_Shenqing {
     @JoinColumn(name = "status_id")
     private Dict status; // 入库申请状态
 
-
-    @ManyToOne
-    @JoinColumn(name = "cangkuquerenren_id")
-    private User cangkuquerenren;  //仓库确认人
-    private Date cangkuquerenshijian; //仓库确认时间
-
-
-
     @ManyToOne
     @JoinColumn(name = "heyuehao_id")
     private Heyuehao heyuehao;  //哪个合约号上退的
-
-
-
 
 
 
@@ -80,6 +76,15 @@ public class YuanSha_RuKu_Shenqing {
     @LastModifiedDate
     private Date lastModifyTime;
     private String lastModifyRen;
+
+    //查询使用条件
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date kaishiriqi;//开始日期
+
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date jieshuriqi;//结束日期
 
 
 }

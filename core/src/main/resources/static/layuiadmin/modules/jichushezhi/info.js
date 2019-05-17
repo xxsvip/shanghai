@@ -71,7 +71,7 @@ layui.define(['form','laydate'], function(exports){
           birthday:obj.field.birthday,
           mobile:obj.field.mobile,
           email:obj.field.email
-      }
+      };
       layer.confirm(
           '确定修改信息?',
           {title:'提示'},function (i){
@@ -101,7 +101,7 @@ layui.define(['form','laydate'], function(exports){
                               anim: -1,
                               icon:5,
                               btn1:function(index){
-                                  layer.open({content:data.data})
+                                  layer.open({content:data.data});
                                   layer.close(index);
                               }
                           });
@@ -139,7 +139,7 @@ layui.define(['form','laydate'], function(exports){
                   $('#email').val(data.data.email);
                   $('#xingming').val(data.data.xingming);
 
-                  if(data.data.sex==0){
+                  if(data.data.sex==1){
                       $('#sex_boy').attr("checked","checked");
                   }else{
                       $('#sex_girl').attr("checked","checked");
@@ -160,5 +160,5 @@ layui.define(['form','laydate'], function(exports){
 
   
   //对外暴露的接口
-  exports('set', {});
+  exports('info', {});
 });

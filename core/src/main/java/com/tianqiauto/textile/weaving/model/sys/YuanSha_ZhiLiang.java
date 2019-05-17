@@ -1,11 +1,13 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,7 +23,19 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_yuansha_zhiliang")
+@EqualsAndHashCode(exclude = {"yuanSha"})
+@ToString(exclude = {"yuanSha"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class YuanSha_ZhiLiang {
+
+
+    //这是不维护关联关系的一方
+    //添加mappedBy属性，则该方不维护关联关系
+    //mappedBy的属性为维护关联关系一方的属性名
+    @OneToOne(mappedBy="yuanSha_zhiLiang")
+    @JsonIgnoreProperties("yuanSha_zhiLiang")
+    private YuanSha yuanSha;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,11 +72,17 @@ public class YuanSha_ZhiLiang {
     private String beizhu; //备注
 
 
+    @Column
     @CreatedDate
     private Date createTime;
+    @Column
+    @CreatedBy
     private String  luruRen;
+    @Column
     @LastModifiedDate
     private Date lastModifyTime;
+    @Column
+    @LastModifiedBy
     private String lastModifyRen;
 
 

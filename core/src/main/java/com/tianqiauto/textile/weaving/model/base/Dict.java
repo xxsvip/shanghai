@@ -2,10 +2,7 @@ package com.tianqiauto.textile.weaving.model.base;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -17,6 +14,8 @@ import javax.persistence.*;
  *  数据字典表
  */
 @EqualsAndHashCode(exclude = {"dict_type"})
+@ToString(exclude = {"dict_type"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dict {
 
 
@@ -32,6 +31,10 @@ public class Dict {
     @JoinColumn(name = "type_id")
     @JsonIgnoreProperties("dicts")
     private Dict_Type dict_type;
+
+
+    @Transient
+    private Long dict_type_id;
 
 
     /**

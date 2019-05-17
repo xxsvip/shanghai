@@ -29,7 +29,7 @@ layui.define(['form'], function(exports){
           id:obj.field.id,
           oldpwd:obj.field.oldPassword,
           newpwd:obj.field.password
-      }
+      };
       layer.confirm(
           '确定修改信息?',
           {title:'提示'},function (i){
@@ -38,6 +38,7 @@ layui.define(['form'], function(exports){
                   type:'get',
                   data:param,
                   success:function(data,index){
+
                       if(data.code == 0){
                           layer.open({
                               title:"消息提醒",
@@ -52,14 +53,13 @@ layui.define(['form'], function(exports){
                           });
                       }else {
                           layer.open({
-                              title:"消息提醒",
+                              title:"错误提示",
                               content:data.message,
                               skin:"layui-layer-molv",
-                              btn:["查看错误信息"],
+                              btn:["确定"],
                               anim: -1,
                               icon:5,
                               btn1:function(index){
-                                  layer.open({content:data.data})
                                   layer.close(index);
                               }
                           });
@@ -72,5 +72,5 @@ layui.define(['form'], function(exports){
 
   
   //对外暴露的接口
-  exports('set', {});
+  exports('password', {});
 });

@@ -14,5 +14,4 @@ import java.util.List;
 public interface WenShiDuRepository extends JpaRepository<WenShiDu,Long>, JpaSpecificationExecutor<WenShiDu> {
 
     List<WenShiDu> findAll();
-
 }

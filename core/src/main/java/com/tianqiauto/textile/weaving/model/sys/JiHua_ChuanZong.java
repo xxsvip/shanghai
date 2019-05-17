@@ -1,13 +1,14 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.Gongxu;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,6 +25,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_jihua_chuanzong")
+@EqualsAndHashCode(exclude = {"banci","jitaihao","heyuehao","status","jiHuaChuanZongMain","zhiXing_chuanZong"})
+@ToString(exclude = {"banci","jitaihao","heyuehao","status","jiHuaChuanZongMain","zhiXing_chuanZong"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class JiHua_ChuanZong {
 
 
@@ -31,8 +36,6 @@ public class JiHua_ChuanZong {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
 
     private Date riqi; //计划日期
 
@@ -72,5 +75,23 @@ public class JiHua_ChuanZong {
 
     private String beizhu;   //备注
 
+    @ManyToOne
+    @JoinColumn(name = "jihua_chuanzong_main_id")
+    @JsonIgnoreProperties("jiHua_chuanZongs")
+    private JiHua_ChuanZong_Main jiHuaChuanZongMain;
+
+    //查询使用条件
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date  kaishiriqi;//下单开始日期
+
+    @Transient
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date  jieshuriqi;//下单结束日期
+
+
+    @OneToOne(mappedBy="jiHua_chuanZong")
+    @JsonIgnoreProperties("jiHua_chuanZong")
+    private ZhiXing_ChuanZong zhiXing_chuanZong;
 
 }

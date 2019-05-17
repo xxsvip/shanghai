@@ -3,21 +3,21 @@ package com.tianqiauto.textile.weaving.service.jichushezhi;
 import com.tianqiauto.textile.weaving.model.base.Permission;
 import com.tianqiauto.textile.weaving.model.base.Role;
 import com.tianqiauto.textile.weaving.model.base.User;
-import com.tianqiauto.textile.weaving.model.base.User_YuanGong;
 import com.tianqiauto.textile.weaving.repository.UserRepository;
-import com.tianqiauto.textile.weaving.repository.UserYuanGongRepository;
 import com.tianqiauto.textile.weaving.util.procedure.core.ProcedureParamUtlis;
 import com.tianqiauto.textile.weaving.util.procedure.model.ProcedureContext;
 import com.tianqiauto.textile.weaving.util.procedure.service.BaseService;
 import com.tianqiauto.textile.weaving.util.result.Result;
-import com.tianqiauto.textile.weaving.util.update.UpdateCopyProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @ClassName UserService
@@ -34,9 +34,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private UserYuanGongRepository userYuanGongRepository;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -119,7 +116,7 @@ public class UserService {
             jdbcTemplate.update(sql4,id);
             List<Object[]> list = new ArrayList<>();
             for(Role role:roles){
-                String arr[] = new String[2];
+                String[] arr = new String[2];
                 arr[0] = Long.toString(id);
                 arr[1] = role.getId().toString();
                 list.add(arr);
@@ -128,83 +125,6 @@ public class UserService {
         }
     }
 
-    //设置组
-    @Transactional
-    public void updateUserZu(String zu,String user_ids){
-        zu = StringUtils.isEmpty(zu)?null:zu;
-
-        String sql1 = "select id from base_user where id in (select col from SplitIn('"+user_ids+"',',')) and user_yuangong_id is null";
-        String sql2 = "select id from base_user where id in (select col from SplitIn('"+user_ids+"',',')) and user_yuangong_id is not null";
-        String sql3 = "update base_user_yuangong set zu=? where user_id=?";
-        String sql4 = "insert into base_user_yuangong(zu,user_id) values(?,?)";
-        String sql5 = "update b set user_yuangong_id=a.id from base_user_yuangong a,base_user b where a.user_id=b.id and b.user_yuangong_id is null";
-        String sql6 = "update base_user set user_yuangong_id=null where id in " +
-                " (select user_id from base_user_yuangong where zu is null and gongxu_id is null and lunban_id is null)";
-        String sql7 = "delete from base_user_yuangong where zu is null and gongxu_id is null and lunban_id is null";
-
-
-        List<Map<String,Object>> inst_ids = jdbcTemplate.queryForList(sql1);
-        List<Map<String,Object>> upd_ids = jdbcTemplate.queryForList(sql2);
-        /**
-         * 需要insert到base_user_yuangong表中的数据，并把base_user表对应的user_yuangong_id更新
-         */
-        if(inst_ids.size()>0){
-            List<Object[]> inst_list = new ArrayList<>();
-            for (Map<String, Object> map : inst_ids) {
-                String arr[] = new String[2];
-                arr[0] = zu;
-                arr[1] = map.get("id").toString();
-                inst_list.add(arr);
-            }
-            jdbcTemplate.batchUpdate(sql4,inst_list);
-            jdbcTemplate.update(sql5);
-        }
-
-        /**
-         *需要更新base_user_yuangong表中zu字段，查找并删除全部为空的记录，更新base_user表user_yuangong_id为空
-         */
-        if(upd_ids.size()>0){
-            List<Object[]> upd_list = new ArrayList<>();
-            for (Map<String, Object> map : upd_ids) {
-                String arr[] = new String[2];
-                arr[0] = zu;
-                arr[1] = map.get("id").toString();
-                upd_list.add(arr);
-            }
-            jdbcTemplate.batchUpdate(sql3,upd_list);
-            jdbcTemplate.update(sql6);
-            jdbcTemplate.update(sql7);
-        }
-
-    }
-
-    //设置角色
-    @Transactional
-    public void updateUserRole(String[] user_ids,String[] role_ids){
-
-        //先把用户对应角色删除，再重新insert新的角色
-        String sql1 = "delete from base_user_role where user_id=?";
-        String sql2 = "insert into base_user_role(user_id,role_id) values(?,?)";
-
-        if(role_ids.length<=0){
-            for(int i=0; i<user_ids.length; i++){
-                jdbcTemplate.update(sql1,user_ids[i]);
-            }
-        }else{
-            for(int i=0; i<user_ids.length; i++){
-                jdbcTemplate.update(sql1,user_ids[i]);
-
-                List<Object[]> list = new ArrayList<>();
-                for (int j = 0; j < role_ids.length; j++) {
-                    String arr[] = new String[2];
-                    arr[0] = user_ids[i];
-                    arr[1] = role_ids[j];
-                    list.add(arr);
-                }
-                jdbcTemplate.batchUpdate(sql2,list);
-            }
-        }
-    }
 
     //新增时设置角色
     @Transactional
@@ -212,7 +132,7 @@ public class UserService {
         String sql = "insert into base_user_role(user_id,role_id) values(?,?)";
         List<Object[]> list = new ArrayList<>();
         for(Role role:roles){
-            String arr[] = new String[2];
+            String[] arr = new String[2];
             arr[0] = id;
             arr[1] = role.getId().toString();
             list.add(arr);
@@ -228,15 +148,9 @@ public class UserService {
     }
 
     //查询旧密码
-    public Map<String,Object> getPwd(String id){
+    public Map<String,Object> getPwd(Long id){
         String sql = "select password from base_user where id=?";
         return jdbcTemplate.queryForMap(sql,id);
-    }
-
-    //修改密码
-    public int updateUserPwd(String id,String newpwd){
-        String sql = "update base_user set password=? where id=?";
-        return jdbcTemplate.update(sql,newpwd,sql);
     }
 
     @Transactional
@@ -244,29 +158,10 @@ public class UserService {
        return userRepository.save(user);
     }
 
-    @Transactional
-    public void updateUserInfo(User user){
-
-        System.out.println("request user:"+user);
-
-        User_YuanGong user_yuanGong = null;
-        user.getUser_yuanGong().setLunban(null);
-
-        if(user.getUser_yuanGong()!=null){
-
-            user_yuanGong = userYuanGongRepository.saveAndFlush(user.getUser_yuanGong());
-        }
-
-        User userInDB = userRepository.getOne(user.getId());
-        UpdateCopyProperties.copyProperties(user,userInDB, Arrays.asList("birthday","email","mobile","roles","sex","xingming"));
-
-        user.setUser_yuanGong(user_yuanGong);
-
-        System.out.println("userInDB:"+userInDB);
-        userRepository.save(userInDB);
-    }
 
     public List<User> getByZaizhi(Integer sfzz) {
-        return userRepository.findByShifouzaizhi(sfzz);
+        String sql = "SELECT id,birthday,username,xingming,sex,mobile,email,version,create_date,created_by,modified_by,zu,shifouzaizhi FROM base_user WHERE shifouzaizhi = ?";
+        List<User> users = jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(User.class),sfzz);
+        return users;
     }
 }

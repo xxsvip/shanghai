@@ -18,6 +18,7 @@ spring:
 
   thymeleaf:
     cache: false  # 这个开发配置为false，避免改了模板还要重启服务器
+    mode: LEGACYHTML5
   data:
     web:
       pageable:
@@ -28,4 +29,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd  #时间格式化
     time-zone: Asia/Chongqing #时区设置
+
+  resources:
+    static-locations: classpath:/resources/,classpath:/static/,file:${com.shanghai.uploadpath}
+com:
+  shanghai:
+    uploadpath: D:/shanghai/project/upload/
+
 

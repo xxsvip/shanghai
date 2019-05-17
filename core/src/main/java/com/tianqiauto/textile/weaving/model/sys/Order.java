@@ -3,12 +3,12 @@ package com.tianqiauto.textile.weaving.model.sys;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,7 +27,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_order")
-@EqualsAndHashCode(exclude = {"heyuehaos"})
+@EqualsAndHashCode(exclude = {"heyuehaos","yingxiaoyuan","jingli","yuanliaoleixing","chengpinyongtu","kehuxinxi"})
+@ToString(exclude = {"heyuehaos","yingxiaoyuan","jingli","yuanliaoleixing","chengpinyongtu","kehuxinxi"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class Order {
     /**
      * 新增合约号（新增、换经纱、换纬纱）
@@ -65,9 +68,9 @@ public class Order {
 
     private String gongzhiguige; //公制规格
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date xiadanriqi; //下单日期
 
-//    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date jiaohuoriqi; //交货日期
 
@@ -125,11 +128,19 @@ public class Order {
     private String weishazhishu;    //纬纱支数
     private String teshuyaoqiu;     //特殊要求
 
+    private Integer deleted;//1是  0否
+
+    @Column
     @CreatedDate
     private Date createTime;
+    @Column
+    @CreatedBy
     private String  luruRen;
+    @Column
     @LastModifiedDate
     private Date lastModifyTime;
+    @Column
+    @LastModifiedBy
     private String lastModifyRen;
 
     private String beizhu;   //备注
@@ -143,4 +154,16 @@ public class Order {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date xiadanjieshuriqi;//下单结束日期
 
+    @Transient
+    private String heyuehaoStr;
+
+    public void setHeyuehaoStr() {
+        this.heyuehaoStr = "";
+        if (!heyuehaos.isEmpty()){
+            for (Heyuehao heyuehao:heyuehaos){
+                heyuehaoStr+=(heyuehao.getName()+",");
+            }
+            heyuehaoStr = heyuehaoStr.substring(0,heyuehaoStr.length()-1);
+        }
+    }
 }

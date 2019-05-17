@@ -2,10 +2,7 @@ package com.tianqiauto.textile.weaving.model.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -21,8 +18,10 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"roles","user_yuanGong"})
+@EqualsAndHashCode(exclude = {"roles","gongxu","lunban"})
 @EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@ToString(exclude = {"roles","gongxu","lunban"})
 public class User {
 
     @Id
@@ -41,7 +40,7 @@ public class User {
 
     private Date birthday;
 
-    @Email(message = "不是有效的邮箱地址")
+//    @Email(message = "不是有效的邮箱地址")
     private String email;
 
     private String mobile;
@@ -52,17 +51,27 @@ public class User {
     //是否在职
     private Integer shifouzaizhi;
 
-    //一对一关系
-    @JsonIgnoreProperties("user")
-    @OneToOne
-    @JoinColumn(name = "user_yuangong_id")
-    private User_YuanGong user_yuanGong;
-
     @JsonIgnoreProperties("users")
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "base_user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+
+    //关联工序表 可为空
+    @ManyToOne
+    @JoinColumn(name = "gongxu_id")
+    private Gongxu gongxu;
+
+    //若工序为空，则组必为空，新增时不需展示组
+    private Integer zu;
+
+    //所属轮班
+    @ManyToOne
+    @JoinColumn(name = "lunban_id")
+    private Dict lunban;
+
+
 
 
     @Transient
@@ -81,10 +90,6 @@ public class User {
     }
 
 
-
-
-
-
     @Column
     @CreatedDate
     private Date createDate;
@@ -100,5 +105,6 @@ public class User {
     @Column
     @Version
     private Long version;
+
 
 }

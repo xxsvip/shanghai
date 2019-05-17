@@ -29,7 +29,8 @@ layui.define(['table', 'form'], function(exports){
                 if(data.length>0){
                     data = data.sort(sortPXH);
                     var cols = [
-                        {field:'cur_num', width:150, fixed:'left',title:'当前运转位置'}
+                        {field: 'id', title: 'id',hide:true}
+                        ,{field:'cur_num', width:150, fixed:'left',title:'当前运转位置'}
                         ,{field: 'sort', width:150, title:"排序"}
                         ,{title: '班次', width: 150, templet: repNull('banci.name')}
                         ,{title: '轮班', width: 150, templet: repNull('lunban.name')}
@@ -44,18 +45,6 @@ layui.define(['table', 'form'], function(exports){
                 }
             }
         });
-
-
-        //控制复选框变为单选框
-        $('#see_table .layui-form-checkbox').click(function() {
-
-            alert('aaaaa');
-
-            $('#div_form_edit .layui-form-checkbox').removeClass('layui-form-checked');
-            $(this).addClass('layui-form-checked');
-        });
-
-
     });
 
     table.on('tool(table)', function(obj){
@@ -135,7 +124,7 @@ layui.define(['table', 'form'], function(exports){
             ,cols: [cols]
         });
         $('.cur_yzfs_num_upd').each(function (i) {
-            if($(this).val()==data.sort){
+            if($(this).val()==data.pb_yunZhuanFangShi_xiangqing.sort){
                 $(this).prop("checked",true);
             }
         });
@@ -145,8 +134,6 @@ layui.define(['table', 'form'], function(exports){
 
     //详情
     function initYunZhuanInfo(data){
-        console.log(data)
-
         var yz_data = [];
         yz_data = data.pb_yunZhuanFangShi_xiangqing.yunZhuanFangShi.yunZhuanFangShi_xiangqingSet;
         yz_data = yz_data.sort(sortPXH);
@@ -167,8 +154,6 @@ layui.define(['table', 'form'], function(exports){
         });
 
         $('.cur_yzfs_num_sel').each(function (i) {
-            console.log($(this).val())
-            console.log()
            if($(this).val()==data.pb_yunZhuanFangShi_xiangqing.sort){
                 $(this).prop("checked",true);
            }
@@ -176,15 +161,14 @@ layui.define(['table', 'form'], function(exports){
         form.render();
     }
 
-    form.on('radio(radioInput)', function(data){
+    form.on('radio(radioInput)', function(){
         localStorage.removeItem("cur_position");
-        localStorage.setItem("cur_position",data.value);
+        localStorage.setItem("cur_position",$(this).context.id);
     });
 
     //修改运转方式
     function updGx_Yzfs(data, index) {
         var cur_position = localStorage.getItem("cur_position");
-
         if(cur_position == null) {
             layer.open({
                 title:"消息提醒",content:"请选择运转开始位置！",skin:"layui-layer-molv",offset: 'auto',btn:[],time:3000,shade: 0,anim: -1,icon:5
@@ -251,5 +235,5 @@ layui.define(['table', 'form'], function(exports){
         return cols;
     }
 
-    exports('pancunyue', {})
+    exports('gongxupaiban', {})
 });

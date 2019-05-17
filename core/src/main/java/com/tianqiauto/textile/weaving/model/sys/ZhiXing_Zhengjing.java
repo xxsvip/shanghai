@@ -1,10 +1,9 @@
 package com.tianqiauto.textile.weaving.model.sys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +20,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "sys_zhixing_zhengjing")
+@EqualsAndHashCode(exclude = {"jiHua_zhengJing","jingzhou","zhizhou","banci","zhengjinggong"})
+@ToString(exclude = {"jiHua_zhengJing","jingzhou","zhizhou","banci","zhengjinggong"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class ZhiXing_Zhengjing {
 
     @Id
@@ -33,10 +36,8 @@ public class ZhiXing_Zhengjing {
     private JiHua_ZhengJing jiHua_zhengJing;
 
 
-
     //经轴下机详情表、织轴下机详情表
-
-    //    //整经下机相关动作：1。考虑跨班产量计算；2。整经计划状态发生改变；3。登记的经轴/织轴状态发生改变。4。如果浆纱计划不为空，浆纱计划状态需要发生改变
+    //整经下机相关动作：1。考虑跨班产量计算；2。整经计划状态发生改变；3。登记的经轴/织轴状态发生改变。4。如果浆纱计划不为空，浆纱计划状态需要发生改变
     @ManyToOne
     @JoinColumn(name = "jingzhou_id")
     private Beam_JingZhou jingzhou; //产出经轴信息
