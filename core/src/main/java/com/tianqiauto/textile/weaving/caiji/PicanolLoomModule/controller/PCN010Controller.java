@@ -10,19 +10,16 @@ import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.utils.dispenser.Ab
 import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.sys.BuGun;
 import com.tianqiauto.textile.weaving.model.sys.Current_BuJi;
-import com.tianqiauto.textile.weaving.repository.BugunRepository;
+import com.tianqiauto.textile.weaving.repository.BuGunRepository;
 import com.tianqiauto.textile.weaving.repository.DictRepository;
 import com.tianqiauto.textile.weaving.repository.dao.DictDao;
 import com.tianqiauto.textile.weaving.service.common.CommonService;
-import com.tianqiauto.textile.weaving.util.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,7 +31,7 @@ import java.util.Map;
 public class PCN010Controller extends AbstractBispenser {
 
     @Autowired
-    private BugunRepository bugunRepository;
+    private BuGunRepository bugunRepository;
 
     @Autowired
     private PicanolHostRepository picanolHostRepository;

@@ -5,6 +5,7 @@ import com.tianqiauto.textile.weaving.caiji.wenshidu.service.CaijiService;
 import com.tianqiauto.textile.weaving.caiji.wenshidu.utils.Cache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -20,16 +21,24 @@ import javax.annotation.Resource;
 @Order(value = 2)
 public class WenShiDuStartListener implements CommandLineRunner {
 
-    @Resource
+    @Autowired
     private WenshiduRepository wenshiduRepository;
 
     @Autowired
     private CaijiService caijiService;
 
+    @Value("${WenShiDu.is-start:false}")
+    private boolean isStart;
+
     @Override
-    public void run(String... args) throws Exception {
-        cacheInit();
-        caiji();
+    public void run(String... args){
+        if(isStart){
+            cacheInit();
+            caiji();
+            log.info("温湿度程序启动成功！");
+        }else{
+            log.info("温湿度程序配置未启动！");
+        }
     }
 
     private void cacheInit(){
@@ -37,7 +46,7 @@ public class WenShiDuStartListener implements CommandLineRunner {
         log.info("温湿度 Cache initialization succeeded...");
     }
 
-    private void caiji() throws InterruptedException {
+    private void caiji(){
         for (;true;){
             try{
                 Long start = System.currentTimeMillis();

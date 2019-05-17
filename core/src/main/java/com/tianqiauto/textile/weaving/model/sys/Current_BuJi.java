@@ -79,14 +79,14 @@ public class Current_BuJi {
     private Integer shiwanweiweiting; //十万纬纬停次数   setter
 
 
-    private Double weimi; //纬密 根/inch
-
-    private Double suolv; //缩率
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User dangchegong;  //挡车工
+    private Double weimi; //纬密 根/inch
+
+    private Double suolv; //缩率
 
 
     private Double xiaolv;//当班效率   //结合当班运行时间，当班开始时间
@@ -102,5 +102,16 @@ public class Current_BuJi {
 
     private Date lastModifyTime;
 
+   public double getLuobushijian(){
+       double shengyucahngdu = getShedingbuchang() - getBuchang();//剩余长度
+       return shengyucahngdu*100*getWeimi()/getChesu();
+   }
 
+   public double getDangbanbuchang(){
+       return getDaweicishu()/getWeimi()/100;
+   }
+
+   public double getShiwanweiweiting(){
+       return getZongting()/(getDaweicishu()/100000);
+   }
 }
