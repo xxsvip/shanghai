@@ -25,9 +25,7 @@ layui.define(function(exports){
      * @returns {{}}
      */
   getParams = function (formId) {
-    // form.render();
     var _params = {};
-
 
     var kaishiriqi,kaishibanci,kaishixuhao,jieshuriqi,jieshubanci,jieshuxuhao;
 

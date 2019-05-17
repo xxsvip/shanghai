@@ -28,7 +28,7 @@ layui.define(['table', 'form', 'laydate'], function(exports){
     tableIns = initTable("table", 'jichushezhi/pancunyue/findAll', 'get',[cols], table,"form");
 
     form.on('submit(form_search)',function(data){
-        var field = getParams("form");
+        var field = data.field;
         table.reload('table',{where:field});
         return false;
     });
