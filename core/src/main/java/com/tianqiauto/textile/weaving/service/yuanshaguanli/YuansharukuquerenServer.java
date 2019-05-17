@@ -99,7 +99,7 @@ public class YuansharukuquerenServer {
         yuansharukuDB.setLingyongren(userRepository.findById(yuanShaRuKu.getLingyongren().getId()).get());
         yuanShaRuKuRepository.save(yuansharukuDB);
         Dict status = new Dict();
-        status.setId(23L);
+        status.setId(21L);
         yuansharukushenqingDB.setStatus(status);
         yuanShaRuKuShenQingRepository.save(yuansharukushenqingDB);
         return yuansharukushenqingDB;

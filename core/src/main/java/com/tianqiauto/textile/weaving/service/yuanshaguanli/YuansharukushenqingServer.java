@@ -91,7 +91,6 @@ public class YuansharukushenqingServer {
     private HeYueHaoRepository heYueHaoRepository;
 
     public YuanSha_RuKu_Shenqing save(YuanSha_RuKu_Shenqing yuanSha_ruKu_shenqing) {
-
         Heyuehao heyuehao = yuanSha_ruKu_shenqing.getHeyuehao();
         if(null != heyuehao && heyuehao.getId() != null){
             heyuehao = heYueHaoRepository.findById(heyuehao.getId()).get();

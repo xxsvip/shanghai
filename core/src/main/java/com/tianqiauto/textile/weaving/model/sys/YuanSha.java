@@ -24,6 +24,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity(name = "sys_yuansha")
 @EqualsAndHashCode(exclude = {"yuanSha_zhiLiang","gongyingshang","baozhuangxingshi"})
+@EntityListeners(AuditingEntityListener.class)
 @ToString(exclude = {"yuanSha_zhiLiang","gongyingshang","baozhuangxingshi"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @EntityListeners(AuditingEntityListener.class)

@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.Predicate;
 import javax.transaction.Transactional;
+import java.sql.Types;
 import java.util.List;
 
 /**
@@ -89,9 +90,16 @@ public class YuansharukudengjiServer {
         return yuanShaRuKuRepository.findAll(specification,pageable);
     }
 
-    public Object create_pihao() {
+    public Object create_pihao(String riqi) {
         ProcedureParamUtlis ppu=new ProcedureParamUtlis();
-        ProcedureContext pro=baseService.callProcedure("pc_create_pihao", ppu.getList());
+        ProcedureContext pro=null;
+        if(riqi==null||riqi.equals("")){
+            pro=baseService.callProcedure("pc_create_pihao", ppu.getList());
+        }else{
+            ppu.addIn(riqi, Types.DATE);
+            pro=baseService.callProcedure("pc_create_pihao_copy", ppu.getList());
+        }
+
         return  pro.getDatas();
     }
 
@@ -101,7 +109,7 @@ public class YuansharukudengjiServer {
         YuanSha yuanshaDB = yuanShaRepository.findByPihao(yuansha.getPihao());
         if(null != yuanshaDB){
             //更新原纱库存
-            yuanshaDB.setKucunliang(yuanshaDB.getKucunliang()+yuansha.getKucunliang());
+            yuanshaDB.setKucunliang(yuanshaDB.getKucunliang()==null?0:yuanshaDB.getKucunliang()+yuansha.getKucunliang());
             yuanShaRepository.save(yuanshaDB);
             YuanSha ys = new YuanSha();
             ys.setId(yuanshaDB.getId());
