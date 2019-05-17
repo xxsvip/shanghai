@@ -1,6 +1,5 @@
 package com.tianqiauto.textile.weaving.service.jichushezhi;
 
-import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.Permission;
 import com.tianqiauto.textile.weaving.model.base.Role;
 import com.tianqiauto.textile.weaving.model.base.User;
@@ -14,9 +13,11 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @ClassName UserService

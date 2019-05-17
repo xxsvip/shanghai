@@ -27,6 +27,7 @@ import java.util.Date;
 @EqualsAndHashCode(exclude = {"yuanShaRuKu","yuanSha","laiyuan","status","heyuehao"})
 @ToString(exclude = {"yuanShaRuKu","yuanSha","laiyuan","status","heyuehao"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class YuanSha_RuKu_Shenqing {
 
 

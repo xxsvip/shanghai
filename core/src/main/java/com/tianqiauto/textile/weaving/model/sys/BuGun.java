@@ -5,6 +5,7 @@ import com.tianqiauto.textile.weaving.model.base.Dict;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
 import com.tianqiauto.textile.weaving.model.base.User;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ import java.util.Date;
 @EqualsAndHashCode(exclude = {"banci","jitaihao","heyuehao","luoburen","zhiZhou_left","zhiZhou_right"})
 @ToString(exclude = {"banci","jitaihao","heyuehao","luoburen","zhiZhou_left","zhiZhou_right"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class BuGun {
 
 

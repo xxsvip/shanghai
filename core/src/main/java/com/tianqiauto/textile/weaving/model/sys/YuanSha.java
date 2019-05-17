@@ -27,6 +27,7 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @ToString(exclude = {"yuanSha_zhiLiang","gongyingshang","baozhuangxingshi"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class YuanSha {
 
     @Id
