@@ -114,8 +114,8 @@ public class PCN031Thread extends AbstractAnalysis {
         long param2Str = BytesUtil.bytesToLongWord(param2);
         currentBuJi.setDaweicishu((double)param2Str);
 
-//        byte[] param3 = Arrays.copyOfRange(bt, 10, 14);//参数3 换班经过时间（秒）
-//        long param3Str = BytesUtil.bytesToLongWord(param3);
+        byte[] param3 = Arrays.copyOfRange(bt, 10, 14);//参数3 换班经过时间（秒）
+        long param3Str = BytesUtil.bytesToLongWord(param3);
 
         byte[] param4 = Arrays.copyOfRange(bt, 14, 18);//参数4 生产时间（秒）
         long param4Str = BytesUtil.bytesToLongWord(param4);
@@ -132,6 +132,8 @@ public class PCN031Thread extends AbstractAnalysis {
         int param8Str = BytesUtil.bytesToWord(param8);
         currentBuJi.setJingting(param8Str);
         currentBuJi.setZongting(param8Str+param6Str+param7Str);//总停
+
+        currentBuJi.setXiaolv(param4Str*0.1/param3Str);//设置效率 = 生产时间 / 换班经过时间
     }
 
     private String getParaNum(short shiftNumber, int number) {

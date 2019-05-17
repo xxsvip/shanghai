@@ -95,7 +95,7 @@ public class ChuanzongjihuazhixingServer {
 
     @Autowired
     private BeamzhizhoucurrentRepository beanzhizhoucurrentRepository;
-//    @Autowired
+    @Autowired
     private BeamzhizhoushiftDao beamzhizhoushiftDao;
 
     private BeamzhizhoushiftRepository beamzhizhoushiftRepository;
@@ -124,6 +124,7 @@ public class ChuanzongjihuazhixingServer {
         if(null == chuanzongTime){
             beamzhizhoushiftDao.updateChuanzongTime(beamzhizhoushift.getId(),new Date());
         }
+//        Shift_ChuanZong
         //fixme Shift_ChuanZong 挡车工问题和
         return zhixing;
     }

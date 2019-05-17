@@ -44,7 +44,7 @@ public class DataWriteBaseJob { //fixme 继承JOB
                 cbjs.add(bj);
             }
         }
-        paramDao.saveAll_Current_BuJi(cbjs);
+        paramDao.saveAll_Current_BuJi(cbjs);//插入current_buji表中
         long end = System.currentTimeMillis();
         log.info("数据存入数据库共耗时："+(end-start)+"毫秒！");
     }
