@@ -35,71 +35,65 @@ import java.util.Map;
 @Transactional
 public class BujijihuazhixingServer {
 
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
-//
-//    public List<Map<String,Object>> query_distinctYouxianji() {
-//        String sql = "SELECT DISTINCT youxianji FROM sys_jihua_buji WHERE DELETED = 0 ORDER BY youxianji";
-//        return jdbcTemplate.queryForList(sql);
-//    }
-//
-//
-//    @Autowired
-//    private JihuaBujiRepository jihuaBujiRepository;
-//
-//    public Page<JiHua_BuJi> findAll(JiHua_BuJi jiHuaBuJi, Pageable pageable) {
-//        Specification<JiHua_BuJi> specification = (root, criteriaQuery, criteriaBuilder) -> {
-//            ModelUtil<JiHua_BuJi> mu = new ModelUtil<>(jiHuaBuJi,root);
-//            //开始日期和结束日期
-//            if(!StringUtils.isEmpty(jiHuaBuJi.getKaishiriqi()) || !StringUtils.isEmpty(jiHuaBuJi.getJieshuriqi())) {
-//                mu.addPred(criteriaBuilder.between(root.get("riqi"), jiHuaBuJi.getKaishiriqi(),jiHuaBuJi.getJieshuriqi()));
-//            }
-//            //班次
-//            Param banchi = mu.initParam("banci.id");
-//            if(!banchi.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(banchi.getPath(),banchi.getValue()));
-//            }
-//            //类型
-//            Param leixing = mu.initParam("leixing.id");
-//            if(!leixing.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(leixing.getPath(),leixing.getValue()));
-//            }
-//            //机型
-//            Param jixing = mu.initParam("jitaihao.gongxu.id");
-//            if(!jixing.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(jixing.getPath(),jixing.getValue()));
-//            }
-//            //机台号
-//            Param jitaihao = mu.initParam("jitaihao.id");
-//            if(!jitaihao.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(jitaihao.getPath(),jitaihao.getValue()));
-//            }
-//            //合约号
-//            Param heyuehao = mu.initParam("heyuehao.id");
-//            if(!heyuehao.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(heyuehao.getPath(),heyuehao.getValue()));
-//            }
-//            //单双轴
-//            Param danshuangzhou = mu.initParam("danshuangzhou.id");
-//            if(!danshuangzhou.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(danshuangzhou.getPath(),danshuangzhou.getValue()));
-//            }
-//            //优先级
-//            Param youxianji = mu.initParam("youxianji");
-//            if(!youxianji.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(youxianji.getPath(),youxianji.getValue()));
-//            }
-//            //状态
-//            Param status = mu.initParam("status.id");
-//            if(!status.isEmpty()) {
-//                mu.addPred(criteriaBuilder.equal(status.getPath(),status.getValue()));
-//            }
-//            mu.addPred(criteriaBuilder.equal(root.get("deleted"),0));
-//            return criteriaBuilder.and(mu.getPred());
-//        };
-//        return jihuaBujiRepository.findAll(specification,pageable);
-//    }
-//
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private JihuaBujiRepository jihuaBujiRepository;
+
+    public Page<JiHua_BuJi> findAll(JiHua_BuJi jiHuaBuJi, Pageable pageable) {
+        Specification<JiHua_BuJi> specification = (root, criteriaQuery, criteriaBuilder) -> {
+            ModelUtil<JiHua_BuJi> mu = new ModelUtil<>(jiHuaBuJi,root);
+            //开始日期和结束日期
+            if(!StringUtils.isEmpty(jiHuaBuJi.getKaishiriqi()) || !StringUtils.isEmpty(jiHuaBuJi.getJieshuriqi())) {
+                mu.addPred(criteriaBuilder.between(root.get("riqi"), jiHuaBuJi.getKaishiriqi(),jiHuaBuJi.getJieshuriqi()));
+            }
+            //班次
+            Param banchi = mu.initParam("banci.id");
+            if(!banchi.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(banchi.getPath(),banchi.getValue()));
+            }
+            //类型
+            Param leixing = mu.initParam("leixing.id");
+            if(!leixing.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(leixing.getPath(),leixing.getValue()));
+            }
+            //机型
+            Param jixing = mu.initParam("jitaihao.gongxu.id");
+            if(!jixing.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(jixing.getPath(),jixing.getValue()));
+            }
+            //机台号
+            Param jitaihao = mu.initParam("jitaihao.id");
+            if(!jitaihao.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(jitaihao.getPath(),jitaihao.getValue()));
+            }
+            //合约号
+            Param heyuehao = mu.initParam("heyuehao.id");
+            if(!heyuehao.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(heyuehao.getPath(),heyuehao.getValue()));
+            }
+            //单双轴
+            Param danshuangzhou = mu.initParam("danshuangzhou.id");
+            if(!danshuangzhou.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(danshuangzhou.getPath(),danshuangzhou.getValue()));
+            }
+            //优先级
+            Param youxianji = mu.initParam("youxianji");
+            if(!youxianji.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(youxianji.getPath(),youxianji.getValue()));
+            }
+            //状态
+            Param status = mu.initParam("status.id");
+            if(!status.isEmpty()) {
+                mu.addPred(criteriaBuilder.equal(status.getPath(),status.getValue()));
+            }
+            mu.addPred(criteriaBuilder.equal(root.get("deleted"),0));
+            return criteriaBuilder.and(mu.getPred());
+        };
+        return jihuaBujiRepository.findAll(specification,pageable);
+    }
+
 //    @Autowired
 //    private DictDao dictDao;
 //

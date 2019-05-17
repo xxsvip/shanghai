@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tianqiauto.textile.weaving.model.base.SheBei;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,7 @@ import java.util.Date;
 @EqualsAndHashCode(exclude = {"zhizhou","heyuehao","jitaihao_zhengjing","jitaihao_jiangsha_shangche","jitaihao_chuanzong","jitaihao_buji"})
 @ToString(exclude = {"zhizhou","heyuehao","jitaihao_zhengjing","jitaihao_jiangsha_shangche","jitaihao_chuanzong","jitaihao_buji"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class Beam_ZhiZhou_Shift {
 
     @Id

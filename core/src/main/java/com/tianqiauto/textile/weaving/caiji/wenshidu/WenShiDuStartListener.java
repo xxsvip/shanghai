@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @Order(value = 2)
 public class WenShiDuStartListener implements CommandLineRunner {
 
-    @Resource
+    @Autowired
     private WenshiduRepository wenshiduRepository;
 
     @Autowired
@@ -31,7 +31,7 @@ public class WenShiDuStartListener implements CommandLineRunner {
     private boolean isStart;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args){
         if(isStart){
             cacheInit();
             caiji();
@@ -46,7 +46,7 @@ public class WenShiDuStartListener implements CommandLineRunner {
         log.info("温湿度 Cache initialization succeeded...");
     }
 
-    private void caiji() throws InterruptedException {
+    private void caiji(){
         for (;true;){
             try{
                 Long start = System.currentTimeMillis();

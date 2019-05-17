@@ -5,6 +5,7 @@ import com.tianqiauto.textile.weaving.model.base.Dict;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ import java.util.Set;
 @EqualsAndHashCode(exclude = {"banci","heyuehao","status","jiHua_chuanZongs","youxianji"})
 @ToString(exclude = {"banci","heyuehao","status","jiHua_chuanZongs","youxianji"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@EntityListeners(AuditingEntityListener.class)
 public class JiHua_ChuanZong_Main {
 
 

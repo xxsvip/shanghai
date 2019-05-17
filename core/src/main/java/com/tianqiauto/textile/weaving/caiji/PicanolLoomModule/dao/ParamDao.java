@@ -55,6 +55,10 @@ public class ParamDao {
                 ",daweicishu = ?\n" +
                 ",weimi = ?\n" +
                 ",yunxingshijian = ?\n" +
+                ",luobushijian = ?\n" +
+                ",xiaolv = ?\n" +
+                ",dangbanbuchang = ?\n" +
+                ",shiwanweiweiting = ?\n" +
                 "WHERE id = ? ";
         List<Object[]> list = new ArrayList();
         for (Current_BuJi bj: cbjs){
@@ -72,6 +76,10 @@ public class ParamDao {
                     bj.getDaweicishu(),
                     bj.getWeimi(),
                     bj.getYunxingshijian(),
+                    bj.getLuobushijian(),
+                    bj.getXiaolv(),
+                    bj.getDangbanbuchang(),
+                    bj.getShiwanweiweiting(),
                     bj.getId()
             };
             list.add(array);
