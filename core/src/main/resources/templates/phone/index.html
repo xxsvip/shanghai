@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>天启TIS</title>
+    <script th:src="@{/phone/js/mui.min.js}" ></script>
+    <link th:href="@{/phone/css/mui.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	// 设置系统状态栏 
+			function plusReady(){
+			// 设置系统状态栏背景为青色
+			plus.navigator.setStatusBarBackground( "#02bda8" );
+			// 设置系统状态栏样式为浅色文字
+			plus.navigator.setStatusBarStyle( "UIStatusBarStyleBlackOpaque" );
+			}
+			if(window.plus){
+			plusReady();
+			}else{
+			document.addEventListener("plusready",plusReady,false);
+			};
+			// 设置系统状态栏 end
+      	mui.ready(function(){
+      		mui('body').on('tap','a',function(){
+      		   document.location.href=this.href;
+        	})
+      	});
+      	        mui.plusReady(function(){  
+//              var self=plus.webview.currentWebview();  
+//              console.log(JSON.stringify(self))     
+                mui("body").on("tap",".a",function(){  
+                     mui.openWindow({  
+                        url:"2.html",  
+                        id:"a2",  
+                     })  
+                })  
+            });
+    </script>
+</head>
+<body>
+	<!-- 侧滑导航根容器 -->
+	<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+	  <!-- 菜单容器 -->
+	  <aside class="mui-off-canvas-right mui-transitioning" id="offCanvasSide">
+	    <div class="mui-scroll-wrapper r_nav">
+	      <div class="mui-scroll">
+	             <!-- 菜单具体展示内容 -->
+	             <h1 class="n_title">TIS</h1>
+	             <ul class="mui-table-view">
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/chanliang/chan_liang}"  class="mui-navigate-right"> 产量</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/zhizhou/zhi_zhou}" class="mui-navigate-right"> 织轴状态</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/liaoji/liaoji}" class="mui-navigate-right"> 了机预测</a></li>
+	                  <li class="mui-table-view-cell"><a th:href="@{/phone/luobu/luobu}" class="mui-navigate-right"> 落布预测</a></li>
+	              </ul>
+	      </div>
+	    </div>
+	  </aside>
+	  <!-- 主页面容器 -->
+	  <div class="mui-inner-wrap mui-transitioning">
+	    <!-- 主页面标题 -->
+	    <header class="mui-bar mui-bar-nav">
+	      <h1 class="mui-title">TIS</h1>
+	    </header>
+	    <nav class="mui-bar mui-bar-tab foot">
+		    <a class="mui-tab-item  mui-action-back">
+		        <span class="mui-icon"><img th:src="@{/phone/img/back.png}" /></span>
+		    </a>
+		   
+		    <a class="mui-tab-item" th:href="@{/phone/index}">
+		        <span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}" /></span>
+		    </a>
+		    <a class="mui-tab-item" href="#offCanvasSide">
+		        <span class="mui-icon"><img th:src="@{/phone/img/menu.png}" /></span>
+		    </a>
+		</nav>
+	    <div class="mui-content mui-scroll-wrapper warp">
+	      <div class="mui-scroll">
+		        <!-- 主界面具体展示内容 -->
+		        
+		        <!--banner-->
+		        <!--<div class="banner"><img src="img/banner.png"/></div>-->
+		        
+		        <!--主导航-->
+		        <ul class="mui-table-view mui-grid-view mui-grid-9">
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/zhiliang/zhi_liang}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/zl.png}"/></span>
+			                <div class="mui-media-body">质量</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/dingdan/ding_dan}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/dd.png}" /></span>
+			                <div class="mui-media-body">订单</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/chanliang/chan_liang}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/cl.png}" /></span>
+			                <div class="mui-media-body">产量</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/shebei/she_bei}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/sb.png}" /></span>
+			                <div class="mui-media-body">设备</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/nenghao/neng_hao}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/nh.png}" /></span>
+			                <div class="mui-media-body">能源</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 warning">
+			            <a th:href="@{/phone/baojing/bao_jing}" style="background: #36d4c3;">
+			            	<!--<div class="tx">3</div>-->
+			                <span class="mui-icon"><img th:src="@{/phone/img/bj.png}" /></span>
+			                <div class="mui-media-body">警告</div>
+			            </a>
+		            </li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/zhizhou/zhi_zhou}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/zhou.png}" /></span>
+			                <div class="mui-media-body">织轴状态</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/liaoji/liaoji}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/liao_ji.png}"/></span>
+			                <div class="mui-media-body">了机预测</div>
+			            </a>
+			        </li>
+			        
+			        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+			            <a th:href="@{/phone/luobu/luobu}" style="background: #36d4c3;">
+			                <span class="mui-icon"><img th:src="@{/phone/img/luo_bu.png}" /></span>
+			                <div class="mui-media-body">落布预测</div>
+			            </a>
+		            </li>
+		        </ul>
+	        
+	      </div>
+	    </div>  
+	    <div class="mui-off-canvas-backdrop"></div>
+	  </div>
+	</div>
+	
+     
+</body>      
+</html>

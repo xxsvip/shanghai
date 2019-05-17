@@ -1,0 +1,98 @@
+@charset "utf-8";
+.area {margin: 20px auto 0px auto;}
+.mui-bar-nav,.foot,.r_nav,.mui-slider-indicator.mui-segmented-control{background: #02bda8 !important;z-index: 99999; }
+.mui-bar-nav .mui-title{color: #fff;font-size: 1.5rem;}
+			#login{background: #02bda8;border: 0;}
+			.mui-input-group {margin-top: 10px;}
+			.mui-input-group:first-child {margin-top: 30%;}
+			
+			.mui-input-group label {width: 22%;}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {width: 78%;}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {top: 6px;}
+			
+			.mui-content-padded {margin-top: 25px;}
+			
+			.mui-btn {padding: 10px;}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			/*登录页面*/
+
+.ui-page-login {
+	height: 100%;
+	background-color: #fff;
+}
+
+.mui-content {
+	background-color: #fff;
+}
+
+.mui-content .logo {
+	width: 70%;
+	margin: 60px auto;
+}
+
+.mui-content .logo img {
+	width: 100%;
+}
+
+.mui-content .mui-input-group {
+	width: 94%;
+	margin: 0 auto;
+}
+
+.mui-content .mui-content-padded {
+	margin-top: 30px;
+}
+
+.mui-content .mui-btn {
+	padding: 5px;
+}
+
+.mui-content .mui-content-padded p {
+	text-align: center;
+}

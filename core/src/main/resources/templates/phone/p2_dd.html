@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script th:src="@{/phone/js/mui.js}"></script>
+		<link th:href="@{/phone/css/mui.min.css}" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" th:href="@{/phone/css/style.css}" />
+		<script  th:src="@{/phone/js/jquery-1.8.3.min.js}" ></script>
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable mui-scalable">
+			<!-- 菜单容器 -->
+			<aside class="mui-off-canvas-right mui-transitioning" id="offCanvasSide">
+				<div class="mui-scroll-wrapper r_nav">
+					<div class="mui-scroll">
+						<!-- 菜单具体展示内容 -->
+						<h1 class="n_title">TIS</h1>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/zhiliang/zhi_liang}" class="mui-navigate-right"> 质量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/dingdan/ding_dan}" class="mui-navigate-right"> 订单</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/chanliang/chan_liang}" class="mui-navigate-right"> 产量</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/shebei/she_bei}" class="mui-navigate-right"> 设备</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/nenghao/neng_hao}" class="mui-navigate-right"> 能源</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/baojing/bao_jing}" class="mui-navigate-right"> 警告</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/zhizhou/zhi_zhou}" class="mui-navigate-right"> 织轴状态</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/liaoji/liaoji}" class="mui-navigate-right"> 了机预测</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a th:href="@{/phone/luobu/luobu}" class="mui-navigate-right"> 落布预测</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap mui-transitioning">
+				<!-- 主页面标题 -->
+				<header class="mui-bar mui-bar-nav">
+					<h1 class="mui-title">订单</h1>
+				</header>
+				<nav class="mui-bar mui-bar-tab foot">
+					<a class="mui-tab-item  mui-action-back" th:href="@{javascript:history.back(-1)}">
+						<span class="mui-icon"><img th:src="@{/phone/img/back.png}" /></span>
+					</a>
+
+					<a class="mui-tab-item" th:href="@{/phone/index}">
+						<span class="mui-icon mui-active home"><img th:src="@{/phone/img/home.png}" /></span>
+					</a>
+					<a class="mui-tab-item" href="#offCanvasSide">
+						<span class="mui-icon"><img th:src="@{/phone/img/menu.png}" /></span>
+					</a>
+				</nav>
+				<div class="mui-content warp">
+
+					<!-- 主界面具体展示内容 -->
+
+					<div class="mui-slider">
+						<!--sub nav-->
+						<div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<a dataMk="tab" class="mui-control-item mui-active" href="#item1">已完成订单</a>
+							<a dataMk="tab" class="mui-control-item" href="#item2">未完成订单</a>
+							<!--<a dataMk="tab" class="mui-control-item" href="#item2">订单追踪</a>-->
+
+						</div>
+						<!--item content-->
+
+						<div class="mui-slider-group">
+
+							<!--已完成订单-->
+							<div id="item1" class="mui-slider-item mui-control-content mui-active ddzz">
+								<div class="dx_title mui-row">
+									<div class="mui-text-center active">近一周</div>
+									<div class="mui-text-center">近一月</div>
+									<div class="mui-text-center">近一年</div>
+								</div>
+								<div class="mui-scroll-wrapper" style="top:62px">
+									<div class="mui-scroll">
+										<div class="content">
+											<ul class="cl_lists" >
+												<ul class="jindu ddzz_ul" id="yz"></ul>
+
+											</ul>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<!--未完成订单-->
+							<div id="item2" class="mui-slider-item mui-control-content ddzz">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<div class="content">
+											<ul class="jindu ddzz_ul" id="wwcdd">
+												<li class="mui-table-view-cell mui-collapse">
+													<!--折叠菜单标题-->
+													<a class="mui-navigate-right" href="#">
+														<div class="graph"> <strong class="bar" id="bar" style="width:1%;"></strong> </div>
+														<div class="pronum">
+															<div class="pnl"><i></i>已完成总量： 202275</div>
+															<div class="pnr"><i></i>订单计划总量： 99038948793</div>
+														</div>
+														<h2><span>交货期： 2018-12-16</span>订单号： 2017112202 </h2>
+														<p><span style="float: right;color: green;">未超期</span>预交日期： 2019-5-14</p>
+														<p>品种： CGF902983948878671676556562</p>
+													</a>
+													<!--折叠菜单内容-->
+													<div class="mui-collapse-content">
+														<ul class="jindu nenghao">
+															<li>
+																<span class="mui-inline zz_title">整经追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>22</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">浆纱追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>1</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">织布追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>66</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">入库追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>首次入库时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+
+																	<div class="mui-col-xs-4">
+																		<h5>入库累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</li>
+												<li class="mui-table-view-cell mui-collapse">
+													<!--折叠菜单标题-->
+													<a class="mui-navigate-right" href="#">
+														<div class="graph"> <strong class="bar" id="bar" style="width:1%;"></strong> </div>
+														<div class="pronum">
+															<div class="pnl"><i></i>已完成总量： 202275</div>
+															<div class="pnr"><i></i>订单计划总量： 99038948793</div>
+														</div>
+														<h2><span>交货期：2018-12-16</span>订单号： 2017112202 </h2>
+														<p><span style="float: right;color: red;">已超期</span>预交日期： 2018-12-14</p>
+														<p>品种： CGF902983948878671676556562</p>
+													</a>
+													<!--折叠菜单内容-->
+													<div class="mui-collapse-content">
+														<ul class="jindu nenghao">
+															<li>
+																<span class="mui-inline zz_title">整经追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>22</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">浆纱追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>1</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">织布追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>开始生产时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>在产机台数</h5>
+																		<p>66</p>
+																	</div>
+																	<div class="mui-col-xs-4">
+																		<h5>累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<span class="mui-inline zz_title">入库追踪</span>
+																<div class="chanliang mui-row">
+																	<div class="mui-col-xs-4">
+																		<h5>首次入库时间</h5>
+																		<p>2019-02-01</p>
+																	</div>
+
+																	<div class="mui-col-xs-4">
+																		<h5>入库累计产量</h5>
+																		<p>782911(米)</p>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</li>
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+		</div>
+		<!--mui-slider-group-->
+
+		</div>
+		<!--主体内容部分 end-->
+
+		</div>
+		<div class="mui-off-canvas-backdrop"></div>
+		</div>
+		</div>
+		<script th:src="@{/phone/js/echarts.min.js}" ></script>
+		<script type="text/javascript" charset="utf-8" th:src="@{/phone/js/ding_dan/ding_dan.js}">
+
+		</script>
+
+	</body>
+
+</html>

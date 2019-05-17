@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<title>上海纺织</title>
+		<meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" /><link  th:href="@{/tv/css/mui.min.css}" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" th:href="@{/tv/css/main.css}"/></head>
+
+	<body>
+		<div class="big-ping">
+			<div class="gfxx">
+				<div class="big-ping-header">
+					<span class="header-qfzl">
+				穿综计划详情
+			</span>
+					<div class="header-r">
+						<span class="header-tim" id="Date"></span>
+						<!--<span class="header-bcz" id="banci">
+					早班    
+				</span>
+						<span class="header-bcj" id="lunban">
+					甲班    
+				</span>-->
+					</div>
+
+				</div>
+
+				<table class="layui-table center-table" lay-even="" lay-skin="row">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>日期</th>
+							<th>班次</th>
+							<th>品种</th>
+							<th>合约号</th>
+							<th>机台号</th>
+							<th>轴数</th>
+							<th>状态</th>
+						</tr>
+					</thead>
+					<tbody id="body">
+						<!--<tr>
+							<td>1</td>
+							<td>2019/4/1</td>
+							<td>早班</td>
+							<td>03-18-82</td>
+							<td>ck01</td>
+							<td>4</td>
+							<td class="ycha">已完成4个轴</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2019/4/1</td>
+							<td>早班</td>
+							<td>03-18-82</td>
+							<td>ck01</td>
+							<td>4</td>
+							<td class="wdcha">已完成3个轴</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>2019/4/1</td>
+							<td>早班</td>
+							<td>03-18-82</td>
+							<td>ck01</td>
+							<td>4</td>
+							<td class="wdcha">未执行</td>
+						</tr>-->
+					</tbody>
+				</table>
+			</div>
+
+			
+		</div>
+ 
+	<script th:src="@{/tv/js/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/tv/js/tv/chuan_zong_jihua.js}"></script>
+<script th:src="@{/tv/js/mui.min.js}"></script>
+<script th:src="@{/tv/js/date.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+  	mui.init();
+</script>
+</body>
+
+</html>

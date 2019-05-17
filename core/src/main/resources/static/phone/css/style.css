@@ -1,0 +1,179 @@
+@charset "utf-8";
+/*HMES
+Created by wang on 2017-12-05.
+Copyright 2017 wang. All rights reserved.
+*/
+
+/*全局*/
+*{margin: 0;padding: 0;outline: none;}
+img{width: 100%;}
+.warp{background: #fff;height: 100%;}
+ul,li{list-style: none;}
+body{background: #f2f2f2;}
+i,em{font-style: normal;}
+h1, h2, h3, h4, h5, h6{line-height: 1.3;}
+/*head*/
+.mui-table-view.mui-grid-view .mui-table-view-cell>a:not(.mui-btn):active{background: #02a592;}
+.mui-table-view.mui-grid-view .mui-table-view-cell.mui-active>a{background: #02a592;}
+.mui-bar-nav,.foot,.r_nav,.mui-slider-indicator.mui-segmented-control{background: #02bda8 !important;z-index: 99999; }
+.mui-bar-nav .mui-title{color: #fff;font-size: 1.5rem;}
+.banner{margin-bottom: 25px;}
+.foot .mui-tab-item .home{width: 36px;height: 36px;}
+
+a.mui-active{background: #0aa291 !important; }
+/*主导航*/
+
+.mui-slider{background: #F2F2F2;}
+.mui-grid-view.mui-grid-9{background: none;border: 0;padding:0 4px;}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell{border: 0;/*padding: 5px;*/}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell a{background: #02bda8;}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{color: #fff;}
+
+.mui-grid-view.mui-grid-9 .mui-media .mui-icon{width: 50px;height: 50px;}
+.mui-grid-view.mui-grid-9 .warning .tx{width: 28px;height: 28px;line-height:27px;font-size:14px;position: absolute;right: -5px;top:-8px;background: #f83c3c;border-radius: 50%;color: #fff;}
+.mui-grid-view.mui-grid-9 .warning{overflow: visible !important;}
+.mui-grid-view.mui-grid-9 .warning a{overflow: visible !important;}
+
+
+/*侧导航*/
+.r_nav .n_title{color: #fff;font-size: 1.7rem; text-align: left;font-weight: normal;padding-left: 13px; margin-top: 70px;    height: 21px;
+    line-height: 21px;border-left: 3px solid #fff;}
+.r_nav .mui-table-view{margin-top: 60px;background: none;}
+.r_nav .mui-table-view .mui-navigate-right{color: #fff;}
+
+
+/*质量*/
+#mui-slider-group{position: relative !important;top:0;}
+.mui-fullscreen .mui-inner-wrap .warp .mui-slider-group{position: relative !important;top:0;}
+.mui-slider-indicator.mui-segmented-control a{color: #fff;}
+.warp .mui-scroll .mui-slider{height:100%;height:-webkit-fill-available;border: 0;}
+/*.warp .mui-scroll .content{height:-webkit-fit-content;}*/
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{color: #fff; display: inline; padding:2px 18px; margin: 0 20px;box-sizing:border-box ; }
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{color: #fff;border: 1px solid #fff !important;background: none !important;}
+.mui-segmented-control.mui-segmented-control-inverted.zl .mui-control-item{padding:2px 3px; margin: 0 5px;}
+
+.warp .mui-slider .mui-slider-item{border: 0 !important;height: -webkit-fill-available;}
+.mui-slider-indicator.mui-segmented-control{height: 40px;line-height: 40px;margin-bottom: 8px;}
+
+ 
+
+ /*质量主题部分*/
+.warp .mui-slider-group{height:auto;background: #F2F2F2;}
+.warp .mui-slider-group .mui-slider-item .mui-scroll-wrapper{padding-bottom: 55px; }
+.mui-slider-group .yuefen{height: 40px;background: #f7f7f7; line-height: 40px;text-align: center;   }
+.mui-slider-group .defen div{width:15%;float:left;font-size: 12px;color: #fff;background: #00d2ba;text-align: center;margin:5px 2.5% ;margin-bottom: 0;}
+.mui-slider-group .defen div:nth-child(1){background: transparent;}
+
+.mui-slider-group .content .zhibiao li{display:-webkit-box;display: flex;display:-webkit-flex;padding: 12px 10px;line-height: 14px;}
+.mui-slider-group .content .zhibiao li:nth-last-child(odd){background: #f7f7f7;}
+.mui-slider-group .content .zhibiao li div{flex-grow:1;-webkit-flex-flow:1;-webkit-flex:1;flex:1;text-align: center;font-size: 15px;color: #454545;}
+.mui-slider-group .content .zhibiao li div:nth-child(1){font-size: 12px;color: #656565;}
+
+.mui-slider-group .content .zhibiao li:last-child h5{font-size: 16px;border-left: 3px solid #fd9643; color: #222;padding-left: 11px;}
+
+/*订单进度*/
+
+.graph{   border: 1px solid #f8894d; height: 15px; } 
+.bar{ display: block; background: #f8894d; float: left; height: 100%; text-align: center; font-family: Verdana; line-height: 15px; color: #FFF;font-size: 12px; } 
+
+.mui-content .mui-slider-group .jindu li{background: #fff;margin-top: 6px;padding: 10px;}
+.mui-content .mui-slider-group .jindu li .pronum{height: 20px;line-height: 20px;font-size: 12px;color:#656565;}
+.mui-content .mui-slider-group .jindu li .pronum i{display: inline-block;width: 7px;height: 7px;background: #5d5d5d; margin-right: 3px;}
+.mui-content .mui-slider-group .jindu li .pronum .pnl{float: left;}
+.mui-content .mui-slider-group .jindu li .pronum .pnr{float: right;}
+.mui-content .mui-slider-group .content .jindu li h2{font-size: 16px;font-weight: 500; margin: 10px 0;border-left: 3px solid #02bda8; padding-left: 6px;}
+.mui-content .mui-slider-group .content li h2 span{float: right;}
+.mui-content .mui-slider-group .content li p{margin-bottom: 0;font-size: 14px;}
+/*订单追踪*/
+.mui-content .mui-slider-group .ddzz .content .ddzz_ul .mui-active{background: #fff;}
+/*.mui-content .mui-slider-group .ddzz .content .ddzz_ul .mui-active a{color: #f8894d;font-weight: bold;}*/
+.mui-content .mui-slider-group .ddzz .content .zz_title{color:#02A592;font-size: 16px;}
+.mui-content .mui-slider-group .ddzz .content .jindu li{margin: 5px 0px;padding: 0px;}
+/*订单管理折叠菜单样式*/
+.mui-content .mui-slider-group .ddzz .mui-table-view-cell>a:not(.mui-btn) {margin: 10px !important;}
+.mui-navigate-right:after, .mui-push-left:after, .mui-push-right:after{color:#35e5d1;font-size:20px;}
+.mui-content .mui-slider-group .ddzz .mui-table-view-cell.mui-collapse>.mui-navigate-right:after,
+.mui-content .mui-slider-group .ddzz .mui-table-view-cell.mui-collapse>.mui-push-right:after {top:90%;}
+/*当日改纺*/
+.mui-content .mui-slider-group .gaifang{padding:0 7px;}
+.mui-content .mui-slider-group .gaifang li{background: #fff;margin-top: 6px;padding: 10px;border-radius: 2px; padding: 5px 3px;}
+.mui-content .mui-slider-group .gaifang li h2{background: url(../img/yd.png)  no-repeat;border: none;background-size: 15px 15px; padding-left: 20px; margin-top: 5px;}
+.mui-content .mui-slider-group .content li i{padding: 0 4px;}
+.mui-content .mui-slider-group .gaifang li .gb{padding-left: 20px;}
+
+
+/*能耗日报*/
+.chart {height: 200px;margin: 0px;padding: 0px;}
+.mui-content .mui-slider-group .nenghao li{text-align: center;}
+.mui-content .mui-slider-group .nenghao li span.time{background: url(../img/rq.png) 0 2px  no-repeat;background-size: 15px 15px; padding-left: 20px; margin: 7px 0 15px 0;color: #02bda8;font-size: 16px; }
+.mui-content .mui-slider-group .nenghao li .chanliang{margin-bottom: 14px;}
+.mui-content .mui-slider-group .nenghao li .chanliang h5{color: #757575;font-size: 12px; margin-bottom: 5px;}
+.mui-content .mui-slider-group .nenghao li .chanliang p{color: #282828;font-size: 16px;font-weight: 550; }
+.mui-content .mui-slider-group .nenghao li .chanliang .chaoxian{color: red;}
+/*实时温湿度*/
+.mui-content .mui-slider-group .wenshidu li{background: #fff;padding: 15px 0 10px 0;border-left: #02c8b2 2px solid;margin-top: 6px;}
+.mui-content .mui-slider-group .wenshidu li .chanliang{margin-bottom: 0px;display:-webkit-box;display: flex;align-items: center;-webkit-align-items: center;}
+.mui-content .mui-slider-group .wenshidu li .chanliang div{flex: 1;-webkit-flex: 1;}
+.mui-content .mui-slider-group .wenshidu li .chanliang .add{color: #282828;font-size: 16px;font-weight: 600;text-align: left; padding-left: 15px;}
+.mui-content .mui-slider-group .wenshidu li .chanliang .wd{background: url(../img/wd.png) 3px 3px  no-repeat;background-size: 21px 39px;position: relative;}
+.mui-content .mui-slider-group .wenshidu li .chanliang .sd{background: url(../img/sd.png) 3px 3px  no-repeat;background-size: 40px 39px;padding-left: 31px; }
+.mui-content .mui-slider-group .wenshidu li .chanliang .wd:before{content: "";width: 1px;height: 25px;background: #e2e2e2;display: block;position: absolute;left: -10px;top:8px;}
+.mui-content .mui-slider-group .wenshidu li .chanliang .wd:after{content: "";width: 1px;height: 25px;background: #e2e2e2;display: block;position: absolute;right: 10px;top:8px;}
+
+/*低效机台 --设备页面*/
+.mui-content .mui-slider-group .slider-container{margin: 20px auto 5px auto;}
+.mui-content .mui-slider-group .xs{display: block;}
+.mui-content .mui-slider-group .yc{display: none;}
+.mui-content .mui-slider-group #zb_sssj_box .red{color: red;margin-left: 10px;}
+.mui-content .mui-slider-group #zb_sssj_box .green{color: darkgreen;margin-left: 10px;}
+.mui-content .sb .mui-control-item{/*padding: 2px 5px;*/box-sizing:border-box;margin: 0 5px;}
+.mui-content .mui-slider-group .dx_title{background: #fff;padding:15px 0px;display: -webkit-box;display: flex; justify-content: space-around;-webkit-justify-content: space-around; margin-top: 3px;}
+.mui-content .mui-slider-group .dx_title div{padding: 1px 27px;border-radius: 5px;border: 1px solid #656565;font-size: 13px;color: #656565;}
+.mui-content .mui-slider-group .dx_title .active{ color: #02bda8;border: 1px solid #02bda8;}
+.mui-content .mui-slider-group .dixiao li .wd{background: none !important;padding-left: 0 !important;}
+.mui-content .mui-slider-group .dixiao li .wd:before{left: -5px !important;}
+.mui-content .mui-slider-group .dixiao li .wd:after{right: -2px !important;}
+.mui-content .mui-slider-group .dixiao li .xl{background: url(../img/xl_red.png) 11px 9px  no-repeat;background-size: 27px 26px;padding-left: 31px;}
+.mui-content .mui-slider-group .dixiao li .chanliang .add{padding-left: 0;text-align: center;}
+
+
+/*报警页面w*/
+.jb .zl_title .mui-control-item{padding: 2px 5px;box-sizing:border-box;margin: 0 8px;}
+.mui-inner-wrap .mui-content .zl_title {display:inline-block;position: relative;}
+.mui-inner-wrap .mui-content .zl_title .tx{width: 18px;height: 18px;line-height:18px;font-size:12px;position: absolute;right:0px;top:0px;background: #f83c3c;border-radius: 50%;color: #fff;text-align: center;}
+.mui-slider-group .content .zhibiao li{display:-webkit-box;display: flex;display:-webkit-flex;padding: 12px 10px;line-height: 14px;}
+.mui-slider-group .content .bj_lists{margin-top: 15px;padding:0 7px;}
+.mui-slider-group .content .bj_lists li {margin: 10px auto;padding:7px;background-color: #FFF;border-radius: 3px;}
+
+
+.mui-slider-group .content .bj_lists li h5{font-size: 12px;background: url(../img/icon01.png) no-repeat 0 0;background-size: 13px 13px;color: #3a3a3a;padding-left: 18px;}
+.mui-slider-group .content  li h5 span{float: right;color: #656565;}
+.mui-slider-group .content  li h2{color: #131313;font-size: 15px;font-weight: 500; margin:12px 0px;}
+.mui-slider-group .content .bj_lists li p.bom{font-size: 12px;background: url(../img/icon02.png) no-repeat 1px 3px;background-size: 13px 13px;padding-left: 18px;margin-bottom: 0;}
+
+/*产量页面2017/12/8*/
+.mui-content .cl .mui-control-item{padding: 2px 5px;box-sizing:border-box;margin: 0 3px;}
+.mui-slider-group .content .cl_lists {margin-top: 5px;}
+.mui-slider-group .content .cl_lists li{background-color: #fff;height: auto;padding: 8px 18px;margin-bottom: 5px;}
+.mui-slider-group .content .cl_lists li .cl_bc{padding:2px 0px;text-align: center;color: #01ccb6;font-size: 16px;border-bottom: 1px solid #e9e9e9;margin-bottom: 10px;}
+.mui-slider-group .content .cl_lists li h5{background: url(../img/icon3.png) no-repeat 0 1px;background-size: 13px 13px;padding-left: 6px;color:#111;font-size: 15px;margin-top: 15px;}
+.mui-slider-group .content .cl_lists li .hzcl{font-size: 12px;color: #656565;/*border-right: 1px solid #CBCBCB;*/}
+.mui-slider-group .content .cl_lists li .hzcl span{font-size: 15px;color: #111;font-weight: 600;display: block;}
+.mui-slider-group .content .cl_lists li .wcl{font-size: 14px;margin-top: 10px;color: #656565;}
+.mui-slider-group .content .cl_lists li .wcl .red{color:#dd524d;}
+.mui-slider-group .content .cl_lists li span{color: #5ac56f;}
+.mui-slider-group .content .cl_lists li .fgx:after{content: "";width: 1px;height: 25px;background: #e2e2e2;display: block;position: absolute;right: 0px;top:8px;}
+
+/*分页*/
+.mui-pagination{margin-left: 7px;}
+.mui-pagination>li.mui-disabled>span{border-radius: 0;}
+.mui-pagination>li.mui-active>a{background: #fff;color: #02BDA8;border-color: #ddd;}
+.mui-pagination>li>a{color: #656565;}
+.mui-pagination>li:last-child>a{border-radius: 0;}
+
+/*查询条件 下拉*/
+.mui-input-group{display: flex;justify-content:space-around;}
+
+
+
+
