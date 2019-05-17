@@ -58,7 +58,7 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
             {eleId:'laiyuan_add',dictCode:'ys_rukulaiyuan',val:'id'},
         ];
         dictInitSele(initsele,false);
-        create_pihao();
+        create_pihao(null);
         form.render();
         layer.open({
             type: 1
@@ -87,6 +87,9 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
                 laydate.render({
                     elem: '#goururiqi_add',
                     value: new Date()
+                    ,done: function(value, date, endDate){
+                        create_pihao(value);
+                }
                 });
             }
         });
@@ -155,9 +158,10 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
 
 
     //自动生成批号
-    function create_pihao() {
+    function create_pihao(value) {
         $.ajax({
             url: layui.setter.host + 'yuanshaguanli/yuansharukudengji/create_pihao',
+            data:{riqi:value},
             type: 'get',
             async: false,
             success: function (data) {

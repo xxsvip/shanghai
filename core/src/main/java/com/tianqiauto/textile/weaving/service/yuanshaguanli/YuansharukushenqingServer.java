@@ -83,7 +83,7 @@ public class YuansharukushenqingServer {
 
     public YuanSha_RuKu_Shenqing save(YuanSha_RuKu_Shenqing yuanSha_ruKu_shenqing) {
         Dict status = new Dict();
-        status.setId(22L);
+        status.setId(20L);
         yuanSha_ruKu_shenqing.setStatus(status);
         YuanSha yuanSha = yuanSha_ruKu_shenqing.getYuanSha();
         YuanSha yuanshaDB = yuanShaRepository.findByPihao(yuanSha.getPihao());

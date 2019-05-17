@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity(name = "sys_yuansha")
 @EqualsAndHashCode(exclude = {"yuanSha_zhiLiang","gongyingshang","baozhuangxingshi"})
+@EntityListeners(AuditingEntityListener.class)
 @ToString(exclude = {"yuanSha_zhiLiang","gongyingshang","baozhuangxingshi"})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class YuanSha {

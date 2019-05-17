@@ -35,8 +35,8 @@ public class YuansharukudengjiController {
     @GetMapping("create_pihao")
     @ApiOperation("原纱入库管理-生成新批号")
     @ResponseBody
-    public Result create_pihao(){
-        Object ret = yuansharukudengjiServer.create_pihao();
+    public Result create_pihao(String riqi){
+        Object ret = yuansharukudengjiServer.create_pihao(riqi);
         return Result.ok("成功！",ret);
     }
 
