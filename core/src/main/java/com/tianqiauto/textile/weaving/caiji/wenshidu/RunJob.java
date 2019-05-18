@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @Date 2019/3/7 10:38
  */
 @Slf4j
-@Component
+@Component("wenshiduJob")
 @EnableScheduling
 public class RunJob {
 

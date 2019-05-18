@@ -23,7 +23,7 @@ import java.util.List;
  * @Date 2019/5/17 22:24
  */
 @Slf4j
-@Component
+@Component("picanolJob")
 @EnableScheduling
 public class RunJob {
 

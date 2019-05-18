@@ -1,6 +1,5 @@
 package com.tianqiauto.textile.weaving.repository;
 
-import com.tianqiauto.textile.weaving.model.base.SheBei;
 import com.tianqiauto.textile.weaving.model.sys.Beam_ZhiZhou;
 import com.tianqiauto.textile.weaving.model.sys.Beam_ZhiZhou_Current;
 import com.tianqiauto.textile.weaving.model.sys.Chengpin_ChuKu;
