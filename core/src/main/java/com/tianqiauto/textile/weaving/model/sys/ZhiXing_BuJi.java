@@ -43,17 +43,6 @@ public class ZhiXing_BuJi {
     @JoinColumn(name = "zhizhou_right_id")
     private Beam_ZhiZhou zhiZhou_right;
 
-
-
-    @ManyToOne
-    @JoinColumn(name = "zhizhou_left_id")
-    private Beam_ZhiZhou zhiZhou_left;
-
-    @ManyToOne
-    @JoinColumn(name = "zhizhou_right_id")
-    private Beam_ZhiZhou zhiZhou_right;
-
-
     private String beizhu; //上机备注信息
     private Date riqi; //上机日期
     @ManyToOne

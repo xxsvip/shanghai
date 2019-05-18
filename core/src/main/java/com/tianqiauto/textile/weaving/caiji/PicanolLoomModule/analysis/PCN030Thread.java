@@ -1,22 +1,17 @@
-package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.job.analysis;
+package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.analysis;
 
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.PCN;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.ParamVo;
-import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.PicanolHost;
-import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.dao.repository.PicanolHostRepository;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.utils.BytesUtil;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.utils.StringUtils;
 import com.tianqiauto.textile.weaving.model.base.Dict;
-import com.tianqiauto.textile.weaving.model.sys.BuGun;
 import com.tianqiauto.textile.weaving.model.sys.Current_BuJi;
 import com.tianqiauto.textile.weaving.model.sys.Request_BuGun;
-import com.tianqiauto.textile.weaving.repository.BugunRepository;
 import com.tianqiauto.textile.weaving.repository.DictRepository;
 import com.tianqiauto.textile.weaving.repository.RequestBugunRepository;
 import com.tianqiauto.textile.weaving.repository.dao.DictDao;
 import com.tianqiauto.textile.weaving.service.common.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

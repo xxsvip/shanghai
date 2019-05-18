@@ -1,8 +1,7 @@
-package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.job.analysis;
+package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.analysis;
 
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.PCN;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.ParamVo;
-import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.PicanolHost;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.utils.BytesUtil;
 import com.tianqiauto.textile.weaving.model.sys.Current_BuJi;
 import org.springframework.stereotype.Service;

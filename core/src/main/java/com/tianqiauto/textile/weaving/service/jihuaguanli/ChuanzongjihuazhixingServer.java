@@ -79,11 +79,12 @@ public class ChuanzongjihuazhixingServer {
     private BaseService baseService;
 
     public List<Map<String,Object>> getZhizhou(String heyuehao_id) {
-        String sql = "SELECT sys_beam_zhizhou.id,sys_beam_zhizhou.zhouhao FROM sys_beam_zhizhou_current "+
-                "LEFT JOIN sys_beam_zhizhou ON sys_beam_zhizhou_current.zhizhou_id = sys_beam_zhizhou.id "+
-                "LEFT JOIN base_dict ON base_dict.id = sys_beam_zhizhou_current.status_id "+
-                "WHERE sys_beam_zhizhou_current.heyuehao_id = ? "+
-                "AND base_dict.id IN ('30','36') ";
+        String sql= "SELECT sys_beam_zhizhou.id,sys_beam_zhizhou.zhouhao FROM sys_beam_zhizhou_current " +
+                "LEFT JOIN sys_beam_zhizhou ON sys_beam_zhizhou_current.zhizhou_id = sys_beam_zhizhou.id " +
+                "LEFT JOIN base_dict ON base_dict.id = sys_beam_zhizhou_current.status_id " +
+                "LEFT JOIN base_dict_type ON base_dict_type.id = base_dict.type_id " +
+                "WHERE sys_beam_zhizhou_current.heyuehao_id = ? AND base_dict_type.code = 'zhizhouzhuangtai' " +
+                "AND base_dict.[value] IN ('30','40') ";
         return jdbcTemplate.queryForList(sql,heyuehao_id);
     }
 
@@ -98,7 +99,11 @@ public class ChuanzongjihuazhixingServer {
     @Autowired
     private BeamzhizhoushiftDao beamzhizhoushiftDao;
 
+    @Autowired
     private BeamzhizhoushiftRepository beamzhizhoushiftRepository;
+
+    @Autowired
+    private BeamzhizhouRepository beamzhizhouRepository;
 
     public ZhiXing_ChuanZong update(JiHua_ChuanZong jiHuaChuanZong) {
         JiHua_ChuanZong jihua = jihuaChuanzongRepository.findById(jiHuaChuanZong.getId()).get();
@@ -107,7 +112,9 @@ public class ChuanzongjihuazhixingServer {
         zhixing.setChuanzonggong(userRepository.findAllById(zhixing.getChuanzonggong().getId()));//初始化穿综工
         zhixing = zhixingchuanzongRepository.save(zhixing);
         //改变织轴状态Beam_ZhiZhou_Current
-        Beam_ZhiZhou_Current beamZhiZhouCurrent = beanzhizhoucurrentRepository.findById(zhixing.getZhizhou().getId()).get();
+//        Beam_ZhiZhou_Current beamZhiZhouCurrent = beanzhizhoucurrentRepository.findById(zhixing.getZhizhou().getId()).get();
+        Beam_ZhiZhou zhizhou = beamzhizhouRepository.findById(zhixing.getZhizhou().getId()).get();
+        Beam_ZhiZhou_Current beamZhiZhouCurrent = beanzhizhoucurrentRepository.findByZhizhou(zhizhou);
 
         String value = beamZhiZhouCurrent.getStatus().getValue();
         if(value == "30"){//机下满未穿综。
