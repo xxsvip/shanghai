@@ -14,6 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author bjw
@@ -35,12 +36,20 @@ public class BujijihuazhixingController {
         return Result.ok(bujijihuazhixingServer.findAll(jiHuaBuJi,pageable));
     }
 
-//    @PostMapping("update")
-//    @Logger(msg = "计划管理-修改布机计划信息")
-//    @ApiOperation("计划管理-修改布机计划信息")
-//    public Result update(@RequestBody JiHua_BuJi jiHuaBuJi) {
-//        bujijihuaxiadaServer.update(jiHuaBuJi);
-//        return Result.ok("修改成功！", jiHuaBuJi);
-//    }
+    @PostMapping("update")
+    @Logger(msg = "计划管理-修改布机计划信息")
+    @ApiOperation("计划管理-修改布机计划信息")
+    public Result update(@RequestBody JiHua_BuJi jiHuaBuJi) {
+        bujijihuazhixingServer.update(jiHuaBuJi);
+        return Result.ok("修改成功！", jiHuaBuJi);
+    }
+
+    @GetMapping("getZhizhou")
+    @Logger(msg = "计划管理-根据条件合约号id/来查询织轴信息")
+    @ApiOperation("计划管理-根据条件合约号id/来查询织轴信息")
+    public Result getZhizhou(String heyuehao_id) {
+        List<Map<String, Object>> list = bujijihuazhixingServer.getZhizhou(heyuehao_id);
+        return Result.ok("查询成功！", list);
+    }
 
 }

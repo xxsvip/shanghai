@@ -90,8 +90,8 @@ public class CaijiService {
         BatchResults<Integer> results = null;
         try {
             results = master.send(batch);
-            wenShiDu.setShidu(Double.valueOf(results.getValue(3).toString()));
-            wenShiDu.setWendu(Double.valueOf(results.getValue(0).toString()));
+            wenShiDu.setShidu(Double.valueOf(results.getValue(3).toString())/10);
+            wenShiDu.setWendu(Double.valueOf(results.getValue(0).toString())/10);
             wenShiDu.setLastModifiedDate(new Date());
         } catch (ModbusTransportException e) {
             log.error("采集点["+wenShiDu.getName()+"]异常："+e.getMessage());

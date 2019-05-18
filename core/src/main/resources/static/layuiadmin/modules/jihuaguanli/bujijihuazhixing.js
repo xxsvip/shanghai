@@ -93,6 +93,14 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
             var shangzhougong_edit = initSelectObj('shangzhougong_edit', 'dingdanguanli/dingdanguanli/getUser','ghxm','id');
             InitSelect(shangzhougong_edit,form);
             form.render();
+
+            var zhizhouSO = initSelectObj('zhiZhou_left_edit', 'jihuaguanli/bujijihuazhixing/getZhizhou','zhouhao','id');
+            zhizhouSO.data={
+                heyuehao_id:data.heyuehao.id
+            };
+            InitSelect(zhizhouSO,form);
+            zhizhouSO.eleId = 'zhiZhou_right_edit';
+            InitSelect(zhizhouSO,form);
             editI = layer.open({
                 type: 1
                 , title: '成品申请信息编辑'
@@ -106,7 +114,7 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
                                 var formData = data.field;
                                 encObject(formData);
                                 $.ajax({
-                                    url: layui.setter.host + 'jihuaguanli/bujijihuaxiada/update',
+                                    url: layui.setter.host + 'jihuaguanli/bujijihuazhixing/update',
                                     contentType: "application/json;charset=utf-8",
                                     type: 'POST',
                                     data: JSON.stringify(formData),
@@ -128,11 +136,10 @@ layui.define(['table', 'laydate', 'form', 'upload'], function (exports) {
 
 
                     var danshuangzhou = data.danshuangzhou.name;
-                    var domObj = $("#zhizhou2");
                     if(danshuangzhou === "双轴"){
-                        domObj.removeClass("layui-hide");
+                        $("#zhizhou2").removeClass("layui-hide");
                     }else{
-                        domObj.removeAttr("lay-verify");
+                        $("#zhiZhou_right_edit").removeAttr('lay-verify');
                     }
                     //查询条件下拉框监听
                     // form.on('select(laiyuan_add)', function() {

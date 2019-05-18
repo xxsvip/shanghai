@@ -1,4 +1,4 @@
-package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.job.analysis;
+package com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.analysis;
 
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.PCN;
 import com.tianqiauto.textile.weaving.caiji.PicanolLoomModule.bean.ParamVo;

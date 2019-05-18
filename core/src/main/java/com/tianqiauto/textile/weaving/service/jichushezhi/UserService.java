@@ -159,7 +159,7 @@ public class UserService {
 
 
     public List<User> getByZaizhi(Integer sfzz) {
-        String sql = "SELECT id,birthday,username,xingming,sex,mobile,email,version,create_date,created_by,modified_by,zu,zaizhi FROM base_user WHERE shifouzaizhi = ?";
+        String sql = "SELECT id,birthday,username,xingming,sex,mobile,email,version,create_date,created_by,modified_by,zu,shifouzaizhi FROM base_user WHERE shifouzaizhi = ?";
         List<User> users = jdbcTemplate.query(sql,new BeanPropertyRowMapper<User>(User.class),sfzz);
         return users;
     }
